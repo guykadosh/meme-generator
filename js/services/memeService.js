@@ -68,9 +68,11 @@ function changeFontSize(diff) {
 
 function switchSelectedLine() {
   gMeme.selectedLineIdx++
-  if (gMeme.selectedLineIdx === gMeme.lines.length) {
+  if (gMeme.selectedLineIdx >= gMeme.lines.length) {
     gMeme.selectedLineIdx = 0
   }
+
+  return gMeme.lines[gMeme.selectedLineIdx]
 }
 
 function moveLine(diff) {
