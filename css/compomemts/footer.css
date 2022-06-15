@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #c5f6fa;
+}
+
+.footer-logo {
+  margin-bottom: 2rem;
+}
+.footer-logo img {
+  width: 250px;
+}
+
+.footer p {
+  font-size: 0.8rem;
+}

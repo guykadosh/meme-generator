@@ -6,14 +6,21 @@
   height: 6rem;
   position: relative;
   background-color: #0b7285;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(11, 115, 133, 0.822),
+    #66d9e8d7
+  );
   width: 100%;
 
+  margin-bottom: 2.25rem;
   color: #fff;
   opacity: 0;
   padding: 0 1.25rem;
-  border-bottom-left-radius: 9px;
-  border-bottom-right-radius: 9px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 
+  box-shadow: -1px 3px 9px 0px rgb(11 115 133 / 50%);
   transition: opacity 1s;
 }
 
@@ -24,7 +31,7 @@
 .header .main-nav a {
   color: #fff;
   text-decoration: none;
-  margin-inline-end: 0.5rem;
+  margin-inline-end: 1.2rem;
   font-size: 1.125rem;
 }
 

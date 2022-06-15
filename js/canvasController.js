@@ -24,22 +24,6 @@ function drawText(line) {
   gCtx.strokeText(text, x, y)
 }
 
-// function drawSelectedRect(line) {
-//   let textWidth = getLineWidth()
-//   if (!getLineWidth()) textWidth = gCtx.measureText(line.txt).width
-//   const textHeight = line.fontSize
-
-//   gCtx.lineWidth = 1
-//   gCtx.strokeStyle = '#f8f9fa'
-//   gCtx.strokeRect(
-//     line.pos.x - 5,
-//     line.pos.y - textHeight + 5,
-//     textWidth + 10,
-//     textHeight + 5
-//   )
-//   gCtx.stroke()
-// }
-
 function drawSelectedRect(line) {
   const lineArea = getLineArea(line)
   gCtx.lineWidth = 1
@@ -82,7 +66,8 @@ function onMove(ev) {
   dragLine(dx, dy)
   //Save the last pos , we remember where we`ve been and move accordingly
   gStartPos = pos
-  //The canvas is render again after every move
+
+  //Update Meme
   renderMeme()
 }
 

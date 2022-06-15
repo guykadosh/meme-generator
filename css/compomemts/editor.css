@@ -9,7 +9,11 @@
 
 .editor {
   flex-direction: column;
-  padding: 0 1.2rem;
+  padding: 1.2rem;
+  border: 1px solid #99e9f2;
+  width: 350px;
+  background-color: #22b8cf;
+  border-radius: 12px;
 }
 
 .editor input {
@@ -18,15 +22,17 @@
 
 .editor-options {
   margin-bottom: 1.25rem;
+  justify-content: space-between;
 }
 
-.editor-options a {
-  margin-inline-end: 0.625rem;
+.editor .input {
+  width: 100%;
+  padding-left: 0.5rem;
 }
 
 .editor-text-options {
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px 10px;
+  gap: 1.65rem;
   margin-bottom: 1.25rem;
 }
 
@@ -39,8 +45,9 @@
   height: 3.125rem;
   width: 3.125rem;
   cursor: pointer;
-  border: 1px solid #adb5bd;
-  background-color: #e9ecef;
+  border: 1px solid #292929;
+  background-color: #e3fafc;
+  background-image: linear-gradient(to right bottom, #3bc8dbd3, #99e9f2fb);
   border-radius: 0.55rem;
   display: flex;
   justify-content: center;

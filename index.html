@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://kit.fontawesome.com/0d3f998bf1.js"
+      crossorigin="anonymous"
+    ></script>
+
     <link rel="stylesheet" href="css/styles.css" />
     <script defer src="js/mainController.js"></script>
     <script defer src="js/services/imgsService.js"></script>
@@ -52,12 +58,15 @@
     <main>
       <section class="gallery main-layout">
         <div class="gallery-options flex">
-          <input
-            type="text"
-            name="search"
-            class="search"
-            placeholder="search"
-          />
+          <div class="search">
+            <i class="icon fa-solid fa-magnifying-glass"></i>
+            <input
+              class="input filter-txt-input"
+              type="text"
+              name="filter-txt"
+              placeholder="Start typing..."
+            />
+          </div>
           <button>Brave</button>
           <div class="tags">Funny cute</div>
         </div>
@@ -82,12 +91,12 @@
         <div class="editor flex">
           <input
             type="text"
-            class="text-line"
-            placeholder="start typing here"
+            class="input text-line"
+            placeholder="Write Something Here..."
             oninput="onSetTextLine(this.value)"
           />
 
-          <div class="editor-options flex justify-center align-center">
+          <div class="editor-options flex align-center">
             <a
               href="#"
               class="btn-option text-switch"
@@ -186,6 +195,15 @@
         </div>
       </section>
     </main>
-    <footer></footer>
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="images/logo-colored.png" alt="logo" />
+      </div>
+      <div class="about"></div>
+      <p class="footer-text">
+        © Coffeerights - Guy Kadosh - Sprint 2 - Coding Acdemy
+      </p>
+      <div class="social"></div>
+    </footer>
   </body>
 </html>

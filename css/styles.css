@@ -12,6 +12,7 @@
 @import 'compomemts/editor.css';
 @import 'compomemts/canvas.css';
 @import 'compomemts/screen.css';
+@import 'compomemts/footer.css';
 
 /* MEDIA */
 @import 'mq/mq.css';

@@ -13,7 +13,7 @@
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   position: absolute;
-  padding: 1.9rem;
+  /* padding: 1.9rem; */
   transition: transform 0.4s;
 }
 
@@ -34,6 +34,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
+  width: 80%;
   text-align: center;
 }
 
@@ -47,9 +48,9 @@
 
 .heading-primary-main {
   display: block;
-  font-size: 2.25rem;
+  font-size: 1.55rem;
   font-weight: 700;
-  letter-spacing: 1rem;
+  letter-spacing: 0.02rem;
 
   animation-name: moveInLeft;
   animation-duration: 1s;
@@ -58,9 +59,9 @@
 
 .heading-primary-sub {
   display: block;
-  font-size: 1.375rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.3rem;
+  /* letter-spacing: 0.3rem; */
 
   animation: moveInRight 1s ease-out;
 }
