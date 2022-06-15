@@ -31,31 +31,31 @@ function drawText(line) {
   gCtx.lineWidth = 0.2
   gCtx.fillStyle = line.color
   gCtx.strokeStyle = line.stroke
-  gCtx.font = `700 ${line.fontSize} ${line.font}`
+  gCtx.font = `${line.weight} ${line.fontSize}px ${line.font}`
   gCtx.fillText(text, x, y)
 
   gCtx.strokeText(text, x, y)
 }
 
 function drawSelectedRect(line) {
-  textWidth = gCtx.measureText(line.txt).width
-  console.log(textWidth)
-  textHeight = +line.fontSize.match(/(\d+)/)[0]
-  console.log(textHeight)
+  textWidth = getLineWidth()
+  textHeight = line.fontSize
 
   gCtx.lineWidth = 1
-  gCtx.strokeStyle = '#777'
+  gCtx.strokeStyle = '#f8f9fa'
   gCtx.strokeRect(
-    line.pos.x,
+    line.pos.x - 5,
     line.pos.y - textHeight + 5,
-    textWidth,
-    textHeight
+    textWidth + 10,
+    textHeight + 5
   )
   gCtx.stroke()
 }
 
 function onSetTextLine(txt) {
-  setTextLine(txt)
+  const line = setTextLine(txt)
+
+  setLineWidth(gCtx.measureText(line.txt).width)
 
   renderMeme()
 }
@@ -74,13 +74,56 @@ function onChangeStrokeColor(color) {
 }
 
 function onChangeFontSize(diff) {
-  changeFontSize(diff)
+  const line = changeFontSize(diff)
+
+  setLineWidth(gCtx.measureText(line.txt).width)
 
   renderMeme()
 }
 
 function onSwitchTextLine() {
-  switchSelectedLine()
+  const line = switchSelectedLine()
+
+  const elInput = document.querySelector('.text-line')
+
+  if (line.txt !== getPlaceholder()) {
+    elInput.value = line.txt
+  } else {
+    elInput.value = ''
+    elInput.setAttribute('placeholder', getPlaceholder())
+  }
+
+  renderMeme()
+}
+
+function onMoveLine(diff) {
+  moveLine(diff)
+
+  renderMeme()
+}
+
+function onAddLine() {
+  addLine()
+  document
+    .querySelector('.text-line')
+    .setAttribute('placeholder', getPlaceholder())
+  renderMeme()
+}
+
+function onRemoveLine() {
+  removeLine()
+
+  renderMeme()
+}
+
+function onSetTextAlign(align) {
+  setTextAlign(align)
+
+  renderMeme()
+}
+
+function onSetFontFamily(fontFamily) {
+  setFontFamily(fontFamily)
 
   renderMeme()
 }

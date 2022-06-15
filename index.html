@@ -84,7 +84,7 @@
         <div class="editor flex">
           <input
             type="text"
-            class="text"
+            class="text-line"
             placeholder="start typing here"
             oninput="onSetTextLine(this.value)"
           />
@@ -97,11 +97,27 @@
             >
               <img src="images/options/up-and-down.png" alt="" />
             </a>
-            <a href="#" class="btn-option text-add">
+
+            <a
+              href="#"
+              class="btn-option text-switch"
+              onclick="onMoveLine(-15)"
+            >
+              ↑
+            </a>
+
+            <a href="#" class="btn-option text-switch" onclick="onMoveLine(15)">
+              ↓
+            </a>
+            <a href="#" class="btn-option text-add" onclick="onAddLine()">
               <img src="images/options/add.png" alt="" />
             </a>
             <a href="#" class="btn-option text-delete">
-              <img src="images/options/trash.png" alt="" />
+              <img
+                src="images/options/trash.png"
+                alt=""
+                onclick="onRemoveLine()"
+              />
             </a>
           </div>
 
@@ -121,17 +137,29 @@
               <img src="images/options/decrease-font.png" alt="" />
             </a>
             <a href="#" class="btn-option text-align-left">
-              <img src="images/options/align-to-left.png" alt="" />
+              <img
+                src="images/options/align-to-left.png"
+                alt=""
+                onclick="onSetTextAlign('start')"
+              />
             </a>
             <a href="#" class="btn-option text-align-center">
-              <img src="images/options/center-text-alignment.png" alt="" />
+              <img
+                src="images/options/center-text-alignment.png"
+                alt=""
+                onclick="onSetTextAlign('center')"
+              />
             </a>
             <a href="#" class="btn-option align-right-">
-              <img src="images/options/align-to-right.png" alt="" />
+              <img
+                src="images/options/align-to-right.png"
+                alt=""
+                onclick="onSetTextAlign('end')"
+              />
             </a>
-            <select class="font-select">
-              <option value="impact">Impact</option>
-              <option value="ariel">Ariel</option>
+            <select class="font-select" onchange="onSetFontFamily(this.value)">
+              <option value="Impact">Impact</option>
+              <option value="Arial">Ariel</option>
             </select>
             <!-- <a href="#" class="btn-option text-weight"> A </a>
             <a href="#" class="btn-option text-color"> -->
