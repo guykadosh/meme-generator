@@ -13,6 +13,7 @@
     <title>GMemes</title>
   </head>
   <body onload="init()">
+    <div class="main-screen" onclick="toggleMenu()"></div>
     <header class="header-container">
       <div class="hero">
         <div class="logo-box">
@@ -42,10 +43,11 @@
           <li><a href="#" class="nav-link">Memes</a></li>
           <li><a href="#" class="nav-link">About</a></li>
         </ul>
+        <button onclick="toggleMenu()" class="menu-toggle">☰</button>
       </div>
     </header>
     <main>
-      <section class="gallery">
+      <section class="gallery main-layout">
         <div class="gallery-options flex">
           <input
             type="text"
@@ -53,34 +55,27 @@
             class="search"
             placeholder="search"
           />
-          <div class="tags">Funny</div>
+          <button>Brave</button>
+          <div class="tags">Funny cute</div>
         </div>
-        <div class="gallery-imgs grid">
-          <!-- <article class="gallery-img">
-              <img src="images/memes/1.jpg" alt="" />
-            </article>
-            <article class="gallery-img">
-              <img src="images/memes/2.jpg" alt="" />
-            </article>
-            <article class="gallery-img">
-              <img src="images/memes/3.jpg" alt="" />
-            </article> -->
-        </div>
+        <div class="gallery-imgs grid"></div>
       </section>
 
       <!-- <section class="memes">
-        <div class="gallery-imgs grid"></div>
+        <div class="gallery-memes main-layout grid"></div>
       </section> -->
 
-      <section class="editor-container flex justify-center">
+      <section class="editor-container main-layout flex justify-center">
+        <!-- CANVAS -->
         <div class="canvas-container">
           <canvas
             class="canvas"
-            height="450px"
-            width="450px"
+            height="500"
+            width="500"
             style="border: 1px solid black"
           ></canvas>
         </div>
+        <!-- EDITOR -->
         <div class="editor flex">
           <input
             type="text"
