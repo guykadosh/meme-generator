@@ -20,6 +20,7 @@ function onImgSelect(imgId) {
   document.querySelector('.editor-container').style.display = 'flex'
 
   renderMeme()
+  resizeCanvas()
 }
 
 function onLoadGallery() {

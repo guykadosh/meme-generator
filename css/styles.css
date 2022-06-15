@@ -3,6 +3,7 @@
 @import 'basic/helpers.css';
 @import 'basic/animations.css';
 @import 'basic/buttons.css';
+@import 'basic/layout.css';
 
 /* COMPONENTS */
 @import 'compomemts/header.css';
@@ -10,3 +11,7 @@
 @import 'compomemts/gallery.css';
 @import 'compomemts/editor.css';
 @import 'compomemts/canvas.css';
+@import 'compomemts/screen.css';
+
+/* MEDIA */
+@import 'mq/mq.css';

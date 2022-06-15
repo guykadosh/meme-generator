@@ -5,7 +5,9 @@ function init() {
   gCanvas = document.querySelector('.canvas')
   gCtx = gCanvas.getContext('2d')
 
-  console.log(gCanvas)
+  window.addEventListener('resize', resizeCanvas)
 }
 
-console.log('Hi')
+function toggleMenu() {
+  document.body.classList.toggle('menu-open')
+}

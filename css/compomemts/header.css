@@ -3,14 +3,14 @@
 }
 
 .header {
-  height: 95px;
+  height: 6rem;
   position: relative;
   background-color: #0b7285;
   width: 100%;
 
   color: #fff;
   opacity: 0;
-  padding-left: 20px;
+  padding: 0 1.25rem;
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
 
@@ -18,14 +18,14 @@
 }
 
 .logo-header {
-  height: 70px;
+  height: 4.375rem;
 }
 
 .header .main-nav a {
   color: #fff;
   text-decoration: none;
-  margin-inline-end: 30px;
-  font-size: 18px;
+  margin-inline-end: 0.5rem;
+  font-size: 1.125rem;
 }
 
 .header .main-nav a:hover {
