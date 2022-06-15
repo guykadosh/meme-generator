@@ -1,4 +1,4 @@
-'user strict'
+'use strict'
 
 // TODO: Code a function renderMeme() that renders an image
 // on the canvas and a line of text on top
@@ -38,8 +38,9 @@ function drawText(line) {
 }
 
 function drawSelectedRect(line) {
-  textWidth = getLineWidth()
-  textHeight = line.fontSize
+  let textWidth = getLineWidth()
+  if (!getLineWidth()) textWidth = gCtx.measureText(line.txt).width
+  const textHeight = line.fontSize
 
   gCtx.lineWidth = 1
   gCtx.strokeStyle = '#f8f9fa'
