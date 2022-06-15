@@ -17,42 +17,6 @@ function renderMeme() {
   }, 10)
 }
 
-function drawImg(url) {
-  var img = new Image()
-  img.src = url
-  img.onload = () => {
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-  }
-}
-
-function drawText(line) {
-  const text = line.txt
-  const { x, y } = line.pos
-  gCtx.lineWidth = 0.2
-  gCtx.fillStyle = line.color
-  gCtx.strokeStyle = line.stroke
-  gCtx.font = `${line.weight} ${line.fontSize}px ${line.font}`
-  gCtx.fillText(text, x, y)
-
-  gCtx.strokeText(text, x, y)
-}
-
-function drawSelectedRect(line) {
-  let textWidth = getLineWidth()
-  if (!getLineWidth()) textWidth = gCtx.measureText(line.txt).width
-  const textHeight = line.fontSize
-
-  gCtx.lineWidth = 1
-  gCtx.strokeStyle = '#f8f9fa'
-  gCtx.strokeRect(
-    line.pos.x - 5,
-    line.pos.y - textHeight + 5,
-    textWidth + 10,
-    textHeight + 5
-  )
-  gCtx.stroke()
-}
-
 function onSetTextLine(txt) {
   const line = setTextLine(txt)
 
@@ -62,7 +26,6 @@ function onSetTextLine(txt) {
 }
 
 function onChangeFillColor(color) {
-  console.log(color)
   setFillColor(color)
 
   renderMeme()
@@ -104,10 +67,12 @@ function onMoveLine(diff) {
 }
 
 function onAddLine() {
-  addLine()
+  const line = addLine()
   document
     .querySelector('.text-line')
     .setAttribute('placeholder', getPlaceholder())
+
+  setLineWidth(gCtx.measureText(line.txt).width)
   renderMeme()
 }
 
@@ -126,12 +91,5 @@ function onSetTextAlign(align) {
 function onSetFontFamily(fontFamily) {
   setFontFamily(fontFamily)
 
-  renderMeme()
-}
-
-function resizeCanvas() {
-  var elContainer = document.querySelector('.canvas-container')
-  gCanvas.width = elContainer.offsetWidth
-  gCanvas.height = elContainer.offsetHeight
   renderMeme()
 }

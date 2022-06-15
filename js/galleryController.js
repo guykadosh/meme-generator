@@ -28,3 +28,8 @@ function onLoadGallery() {
   document.querySelector('.header').style.opacity = '1'
   document.querySelector('.gallery').style.display = 'flex'
 }
+
+function onShowGallery() {
+  document.querySelector('.gallery').style.display = 'flex'
+  document.querySelector('.editor-container').style.display = 'none'
+}

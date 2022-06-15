@@ -34,12 +34,18 @@ let gMeme = {
       font: 'Impact',
       fontSize: 40,
       pos: { x: 10, y: 100 },
+      width: 382.4,
+      isDrag: false,
     },
   ],
 }
 
 function getMeme() {
   return gMeme
+}
+
+function getSelectedLine() {
+  return gMeme.lines[gMeme.selectedLineIdx]
 }
 
 function setTextLine(txt) {
@@ -75,6 +81,12 @@ function switchSelectedLine() {
   return gMeme.lines[gMeme.selectedLineIdx]
 }
 
+function setSelectedLine(lineIdx) {
+  gMeme.selectedLineIdx = lineIdx
+
+  return gMeme.lines[gMeme.selectedLineIdx]
+}
+
 function moveLine(diff) {
   const currY = gMeme.lines[gMeme.selectedLineIdx].pos.y
   const fontSize = gMeme.lines[gMeme.selectedLineIdx].fontSize
@@ -91,7 +103,7 @@ function moveLine(diff) {
 }
 
 function addLine() {
-  let y = gMeme.lines[gMeme.selectedLineIdx].pos.y + 50
+  let y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50
   if (y >= gCanvas.height - gMeme.lines[gMeme.selectedLineIdx].fontSize) y = 50
 
   const line = {
@@ -104,10 +116,13 @@ function addLine() {
     weight: '700',
     fontSize: 40,
     pos: { x: 10, y },
+    isDrag: false,
   }
 
   gMeme.lines.push(line)
   gMeme.selectedLineIdx = gMeme.lines.length - 1
+
+  return line
 }
 
 function removeLine() {
@@ -123,6 +138,34 @@ function getLineWidth() {
   return gMeme.lines[gMeme.selectedLineIdx].width
 }
 
+function getLineArea(line) {
+  // const line = gMeme.lines[lineIdx]
+
+  const lineArea = {
+    x: line.pos.x,
+    y: line.pos.y,
+    width: line.width + 10,
+    height: line.fontSize + 5,
+  }
+
+  return lineArea
+}
+
+function getClickedLine({ x, y }) {
+  const lineIdx = gMeme.lines.findIndex(line => {
+    const lineArea = getLineArea(line)
+
+    return (
+      x >= lineArea.x &&
+      x <= lineArea.x + lineArea.width &&
+      y <= lineArea.y &&
+      y >= lineArea.y - lineArea.height
+    )
+  })
+
+  return lineIdx
+}
+
 function setLineWidth(width) {
   gMeme.lines[gMeme.selectedLineIdx].width = width
   return width
@@ -132,7 +175,7 @@ function setTextAlign(align) {
   gMeme.lines[gMeme.selectedLineIdx].align = align
 
   const line = gMeme.lines[gMeme.selectedLineIdx]
-  console.log(line.align)
+
   switch (line.align) {
     case 'start':
       line.pos.x = 10
@@ -150,6 +193,17 @@ function setTextAlign(align) {
 
 function setFontFamily(fontFamily) {
   gMeme.lines[gMeme.selectedLineIdx].font = fontFamily
+}
+
+function setLineDrag(isDrag) {
+  gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function dragLine(dx, dy) {
+  const line = getSelectedLine()
+
+  line.pos.x += dx
+  line.pos.y += dy
 }
 
 function getPlaceholder() {

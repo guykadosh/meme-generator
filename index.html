@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
-    <script defer src="js/main.js"></script>
+    <script defer src="js/mainController.js"></script>
     <script defer src="js/services/imgsService.js"></script>
     <script defer src="js/services/memeService.js"></script>
     <script defer src="js/memeController.js"></script>
     <script defer src="js/galleryController.js"></script>
+    <script defer src="js/canvasController.js"></script>
     <title>GMemes</title>
   </head>
   <body onload="init()">
@@ -39,7 +40,9 @@
         <img src="images/logo.png" alt="logo" class="logo-header" />
 
         <ul class="main-nav flex clean-list">
-          <li><a href="#" class="nav-link">Gallery</a></li>
+          <li>
+            <a href="#" class="nav-link" onclick="onShowGallery()">Gallery</a>
+          </li>
           <li><a href="#" class="nav-link">Memes</a></li>
           <li><a href="#" class="nav-link">About</a></li>
         </ul>
@@ -163,6 +166,7 @@
             <input
               type="color"
               name="fill-color"
+              value="#ffffff"
               class="color-picker"
               oninput="onChangeFillColor(this.value)"
             />
