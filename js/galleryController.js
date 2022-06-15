@@ -1,0 +1,23 @@
+'use strict'
+
+renderGallery()
+function renderGallery() {
+  const imgs = getImgs()
+
+  const strHTMLs = imgs.map(
+    img => `<article class="gallery-img" onclick="onImgSelect(${img.id})">
+              <img src="${img.url}"  alt="" />
+            </article> `
+  )
+
+  document.querySelector('.gallery-imgs').innerHTML = strHTMLs.join('')
+}
+
+function onImgSelect(imgId) {
+  setImg(imgId)
+
+  document.querySelector('.gallery-imgs').style.display = 'none'
+  document.querySelector('.editor-container').style.display = 'flex'
+
+  renderMeme()
+}

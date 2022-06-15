@@ -1,0 +1,27 @@
+.editor-container {
+  padding-top: 60px;
+  display: none;
+}
+
+.editor {
+  flex-direction: column;
+  padding: 50px;
+}
+
+.editor input {
+  margin-bottom: 20px;
+}
+
+.editor-options {
+  margin-bottom: 20px;
+}
+
+.editor-text-options {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px 10px;
+  margin-bottom: 20px;
+}
+
+.font-select {
+  grid-column: span 3;
+}

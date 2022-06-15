@@ -1,0 +1,12 @@
+.header-container {
+  position: relative;
+}
+
+.header {
+  height: 75px;
+  position: relative;
+  background-color: #f08c00;
+  width: 100%;
+
+  color: #fff;
+}
