@@ -9,9 +9,9 @@ function renderMeme() {
   const img = getImg(meme.selectedImgId)
   gCtx.restore()
   drawImg(img.url)
-  gCtx.font = '48px Ariel'
+
   setTimeout(() => {
-    drawText(meme.lines[meme.selectedLineIdx].txt, 100, 100)
+    meme.lines.forEach(line => drawText(line))
     gCtx.save()
   }, 10)
 }
@@ -24,18 +24,38 @@ function drawImg(url) {
   }
 }
 
-function drawText(text, x, y) {
-  console.log(text, x, y)
-  gCtx.lineWidth = 1
-  gCtx.fillStyle = '#fff'
-  gCtx.strokeStyle = '#000'
-
+function drawText(line) {
+  const text = line.txt
+  const { x, y } = line.pos
+  gCtx.lineWidth = 0.5
+  gCtx.fillStyle = line.color
+  gCtx.strokeStyle = line.stroke
+  gCtx.font = `${line.fontSize} ${line.font}`
   gCtx.fillText(text, x, y, 300)
   gCtx.strokeText(text, x, y, 300)
 }
 
 function onSetTextLine(txt) {
   setTextLine(txt)
+
+  renderMeme()
+}
+
+function onChangeFillColor(color) {
+  console.log(color)
+  setFillColor(color)
+
+  renderMeme()
+}
+
+function onChangeStrokeColor(color) {
+  setStrokeColor(color)
+
+  renderMeme()
+}
+
+function onChangeFontSize(diff) {
+  changeFontSize(diff)
 
   renderMeme()
 }

@@ -76,8 +76,8 @@
         <div class="canvas-container">
           <canvas
             class="canvas"
-            height="500px"
-            width="500px"
+            height="400px"
+            width="400px"
             style="border: 1px solid black"
           ></canvas>
         </div>
@@ -90,41 +90,61 @@
           />
 
           <div class="editor-options flex justify-center align-center">
-            <a href="#" class="text-toggle">
+            <a href="#" class="btn-option text-toggle">
               <img src="images/options/up-and-down.png" alt="" />
             </a>
-            <a href="#" class="text-add">
+            <a href="#" class="btn-option text-add">
               <img src="images/options/add.png" alt="" />
             </a>
-            <a href="#" class="text-delete">
+            <a href="#" class="btn-option text-delete">
               <img src="images/options/trash.png" alt="" />
             </a>
           </div>
 
           <div class="editor-text-options grid">
-            <a href="#" class="text-increase">
+            <a
+              href="#"
+              class="btn-option text-increase"
+              onclick="onChangeFontSize(2)"
+            >
               <img src="images/options/increase-font.png" alt="" />
             </a>
-            <a href="#" class="text-decrease">
+            <a
+              href="#"
+              class="btn-option text-decrease"
+              onclick="onChangeFontSize(-2)"
+            >
               <img src="images/options/decrease-font.png" alt="" />
             </a>
-            <a href="#" class="text-align-left">
+            <a href="#" class="btn-option text-align-left">
               <img src="images/options/align-to-left.png" alt="" />
             </a>
-            <a href="#" class="text-align-center">
+            <a href="#" class="btn-option text-align-center">
               <img src="images/options/center-text-alignment.png" alt="" />
             </a>
-            <a href="#" class="align-right-">
+            <a href="#" class="btn-option align-right-">
               <img src="images/options/align-to-right.png" alt="" />
             </a>
             <select class="font-select">
               <option value="impact">Impact</option>
               <option value="ariel">Ariel</option>
             </select>
-            <a href="#" class="text-weight"> A </a>
-            <a href="#" class="text-color">
-              <img src="images/options/paint-board-and-brush.png" alt="" />
-            </a>
+            <!-- <a href="#" class="btn-option text-weight"> A </a>
+            <a href="#" class="btn-option text-color"> -->
+            <!-- <img src="images/options/paint-board-and-brush.png" alt="" />
+            </a> -->
+            <input
+              type="color"
+              name="fill-color"
+              class="color-picker"
+              oninput="onChangeFillColor(this.value)"
+            />
+            <input
+              type="color"
+              name="stroke-color"
+              class="color-picker"
+              oninput="onChangeStrokeColor(this.value)"
+            />
           </div>
           <div class="emoji-selector"></div>
           <div class="share-btns">

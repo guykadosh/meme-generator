@@ -27,6 +27,20 @@ let gMeme = {
       size: 20,
       align: 'left',
       color: 'red',
+      stroke: 'black',
+      font: 'Ariel',
+      fontSize: '40px',
+      pos: { x: 50, y: 100 },
+    },
+    {
+      txt: 'I sometimes eat Falafel',
+      size: 20,
+      align: 'left',
+      color: 'red',
+      stroke: 'black',
+      font: 'Ariel',
+      fontSize: '40px',
+      pos: { x: 50, y: 150 },
     },
   ],
 }
@@ -41,4 +55,18 @@ function setTextLine(txt) {
 
 function setImg(imgId) {
   gMeme.selectedImgId = imgId
+}
+
+function setFillColor(color) {
+  gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function setStrokeColor(color) {
+  gMeme.lines[gMeme.selectedLineIdx].stroke = color
+}
+
+function changeFontSize(diff) {
+  const num = +gMeme.lines[gMeme.selectedLineIdx].fontSize.match(/(\d+)/)[0]
+  gMeme.lines[gMeme.selectedLineIdx].fontSize = `${num + diff}px`
+  console.log(num + diff)
 }
