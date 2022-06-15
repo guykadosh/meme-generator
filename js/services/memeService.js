@@ -28,9 +28,9 @@ let gMeme = {
       align: 'left',
       color: 'red',
       stroke: 'black',
-      font: 'Ariel',
+      font: 'Arial',
       fontSize: '40px',
-      pos: { x: 50, y: 100 },
+      pos: { x: 10, y: 100 },
     },
     {
       txt: 'I sometimes eat Falafel',
@@ -38,9 +38,9 @@ let gMeme = {
       align: 'left',
       color: 'red',
       stroke: 'black',
-      font: 'Ariel',
+      font: 'Arial',
       fontSize: '40px',
-      pos: { x: 50, y: 150 },
+      pos: { x: 10, y: 150 },
     },
   ],
 }
@@ -68,5 +68,12 @@ function setStrokeColor(color) {
 function changeFontSize(diff) {
   const num = +gMeme.lines[gMeme.selectedLineIdx].fontSize.match(/(\d+)/)[0]
   gMeme.lines[gMeme.selectedLineIdx].fontSize = `${num + diff}px`
-  console.log(num + diff)
+}
+
+function switchSelectedLine() {
+  gMeme.selectedLineIdx++
+  if (gMeme.selectedLineIdx === gMeme.lines.length) {
+    gMeme.selectedLineIdx = 0
+  }
+  console.log(gMeme.selectedLineIdx)
 }

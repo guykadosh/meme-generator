@@ -12,6 +12,7 @@ function renderMeme() {
 
   setTimeout(() => {
     meme.lines.forEach(line => drawText(line))
+    drawSelectedRect(meme.lines[meme.selectedLineIdx])
     gCtx.save()
   }, 10)
 }
@@ -27,12 +28,30 @@ function drawImg(url) {
 function drawText(line) {
   const text = line.txt
   const { x, y } = line.pos
-  gCtx.lineWidth = 0.5
+  gCtx.lineWidth = 0.2
   gCtx.fillStyle = line.color
   gCtx.strokeStyle = line.stroke
-  gCtx.font = `${line.fontSize} ${line.font}`
-  gCtx.fillText(text, x, y, 300)
-  gCtx.strokeText(text, x, y, 300)
+  gCtx.font = `700 ${line.fontSize} ${line.font}`
+  gCtx.fillText(text, x, y)
+
+  gCtx.strokeText(text, x, y)
+}
+
+function drawSelectedRect(line) {
+  textWidth = gCtx.measureText(line.txt).width
+  console.log(textWidth)
+  textHeight = +line.fontSize.match(/(\d+)/)[0]
+  console.log(textHeight)
+
+  gCtx.lineWidth = 1
+  gCtx.strokeStyle = '#777'
+  gCtx.strokeRect(
+    line.pos.x,
+    line.pos.y - textHeight + 5,
+    textWidth,
+    textHeight
+  )
+  gCtx.stroke()
 }
 
 function onSetTextLine(txt) {
@@ -56,6 +75,12 @@ function onChangeStrokeColor(color) {
 
 function onChangeFontSize(diff) {
   changeFontSize(diff)
+
+  renderMeme()
+}
+
+function onSwitchTextLine() {
+  switchSelectedLine()
 
   renderMeme()
 }
