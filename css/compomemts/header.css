@@ -3,10 +3,31 @@
 }
 
 .header {
-  height: 75px;
+  height: 95px;
   position: relative;
-  background-color: #f08c00;
+  background-color: #0b7285;
   width: 100%;
 
   color: #fff;
+  opacity: 0;
+  padding-left: 20px;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+
+  transition: opacity 1s;
+}
+
+.logo-header {
+  height: 70px;
+}
+
+.header .main-nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-inline-end: 30px;
+  font-size: 18px;
+}
+
+.header .main-nav a:hover {
+  color: #c5f6fa;
 }

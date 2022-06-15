@@ -21,3 +21,9 @@ function onImgSelect(imgId) {
 
   renderMeme()
 }
+
+function onLoadGallery() {
+  document.querySelector('.hero').classList.add('hero-hidden')
+  document.querySelector('.header').style.opacity = '1'
+  document.querySelector('.gallery').style.display = 'flex'
+}

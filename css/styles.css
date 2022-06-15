@@ -1,6 +1,8 @@
 /* BASE */
 @import 'basic/base.css';
 @import 'basic/helpers.css';
+@import 'basic/animations.css';
+@import 'basic/buttons.css';
 
 /* COMPONENTS */
 @import 'compomemts/header.css';

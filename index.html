@@ -14,23 +14,28 @@
   </head>
   <body onload="init()">
     <header class="header-container">
-      <div class="hero-hidden hero">
+      <div class="hero">
         <div class="logo-box">
           <img src="images/logo-white.png" alt="logo" class="logo" />
         </div>
         <div class="text-box">
           <h1 class="heading-primary">
-            <span class="heading-primary-main">Memes Generator</span>
+            <span class="heading-primary-main">G-Memes Generator</span>
             <span class="heading-primary-sub"
               >Make your friends & Co-workers laugh</span
             >
           </h1>
-          <a href="#" class="btn btn-white btn-animated">Start Generate</a>
+          <a
+            href="#"
+            class="btn btn-white btn-animated"
+            onclick="onLoadGallery()"
+            >Start Generate</a
+          >
         </div>
       </div>
 
-      <div class="header flex space-between">
-        <img src="images/logo-white.png" alt="logo" class="logo" />
+      <div class="header flex space-between align-center">
+        <img src="images/logo.png" alt="logo" class="logo-header" />
 
         <ul class="main-nav flex clean-list">
           <li><a href="#" class="nav-link">Gallery</a></li>
@@ -38,20 +43,20 @@
           <li><a href="#" class="nav-link">About</a></li>
         </ul>
       </div>
-
-      <main>
-        <section class="gallery">
-          <div class="gallery-options flex">
-            <input
-              type="text"
-              name="search"
-              class="search"
-              placeholder="search"
-            />
-            <div class="tags">Funny</div>
-          </div>
-          <div class="gallery-imgs grid">
-            <!-- <article class="gallery-img">
+    </header>
+    <main>
+      <section class="gallery">
+        <div class="gallery-options flex">
+          <input
+            type="text"
+            name="search"
+            class="search"
+            placeholder="search"
+          />
+          <div class="tags">Funny</div>
+        </div>
+        <div class="gallery-imgs grid">
+          <!-- <article class="gallery-img">
               <img src="images/memes/1.jpg" alt="" />
             </article>
             <article class="gallery-img">
@@ -60,77 +65,76 @@
             <article class="gallery-img">
               <img src="images/memes/3.jpg" alt="" />
             </article> -->
+        </div>
+      </section>
+
+      <!-- <section class="memes">
+        <div class="gallery-imgs grid"></div>
+      </section> -->
+
+      <section class="editor-container flex justify-center align-center">
+        <div class="canvas-container">
+          <canvas
+            class="canvas"
+            height="500px"
+            width="500px"
+            style="border: 1px solid black"
+          ></canvas>
+        </div>
+        <div class="editor flex">
+          <input
+            type="text"
+            class="text"
+            placeholder="start typing here"
+            oninput="onSetTextLine(this.value)"
+          />
+
+          <div class="editor-options flex justify-center align-center">
+            <a href="#" class="text-toggle">
+              <img src="images/options/up-and-down.png" alt="" />
+            </a>
+            <a href="#" class="text-add">
+              <img src="images/options/add.png" alt="" />
+            </a>
+            <a href="#" class="text-delete">
+              <img src="images/options/trash.png" alt="" />
+            </a>
           </div>
-        </section>
 
-        <section class="memes">
-          <div class="gallery-imgs grid"></div>
-        </section>
-
-        <section class="editor-container flex justify-center align-center">
-          <div class="canvas-container">
-            <canvas
-              class="canvas"
-              height="500px"
-              width="500px"
-              style="border: 1px solid black"
-            ></canvas>
+          <div class="editor-text-options grid">
+            <a href="#" class="text-increase">
+              <img src="images/options/increase-font.png" alt="" />
+            </a>
+            <a href="#" class="text-decrease">
+              <img src="images/options/decrease-font.png" alt="" />
+            </a>
+            <a href="#" class="text-align-left">
+              <img src="images/options/align-to-left.png" alt="" />
+            </a>
+            <a href="#" class="text-align-center">
+              <img src="images/options/center-text-alignment.png" alt="" />
+            </a>
+            <a href="#" class="align-right-">
+              <img src="images/options/align-to-right.png" alt="" />
+            </a>
+            <select class="font-select">
+              <option value="impact">Impact</option>
+              <option value="ariel">Ariel</option>
+            </select>
+            <a href="#" class="text-weight"> A </a>
+            <a href="#" class="text-color">
+              <img src="images/options/paint-board-and-brush.png" alt="" />
+            </a>
           </div>
-          <div class="editor flex">
-            <input
-              type="text"
-              class="text"
-              placeholder="start typing here"
-              oninput="onSetTextLine(this.value)"
-            />
-
-            <div class="editor-options flex justify-center align-center">
-              <a href="#" class="text-toggle">
-                <img src="images/options/up-and-down.png" alt="" />
-              </a>
-              <a href="#" class="text-add">
-                <img src="images/options/add.png" alt="" />
-              </a>
-              <a href="#" class="text-delete">
-                <img src="images/options/trash.png" alt="" />
-              </a>
-            </div>
-
-            <div class="editor-text-options grid">
-              <a href="#" class="text-increase">
-                <img src="images/options/increase-font.png" alt="" />
-              </a>
-              <a href="#" class="text-decrease">
-                <img src="images/options/decrease-font.png" alt="" />
-              </a>
-              <a href="#" class="text-align-left">
-                <img src="images/options/align-to-left.png" alt="" />
-              </a>
-              <a href="#" class="text-align-center">
-                <img src="images/options/center-text-alignment.png" alt="" />
-              </a>
-              <a href="#" class="align-right-">
-                <img src="images/options/align-to-right.png" alt="" />
-              </a>
-              <select class="font-select">
-                <option value="impact">Impact</option>
-                <option value="ariel">Ariel</option>
-              </select>
-              <a href="#" class="text-weight"> A </a>
-              <a href="#" class="text-color">
-                <img src="images/options/paint-board-and-brush.png" alt="" />
-              </a>
-            </div>
-            <div class="emoji-selector"></div>
-            <div class="share-btns">
-              <button class="btn-download">Download</button>
-              <button class="btn-upload">Upload</button>
-              <button class="btn-share">Share</button>
-            </div>
+          <div class="emoji-selector"></div>
+          <div class="share-btns">
+            <button class="btn-download">Download</button>
+            <button class="btn-upload">Upload</button>
+            <button class="btn-share">Share</button>
           </div>
-        </section>
-      </main>
-      <footer></footer>
-    </header>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
   </body>
 </html>
