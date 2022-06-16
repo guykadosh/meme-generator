@@ -2,14 +2,24 @@
 
 function renderGallery() {
   const imgs = getImgs()
+  let strHTMLs = `<article class="gallery-img">
+                    <input
+                      type="file"
+                      class="file-input"
+                      name="image"
+                      onchange="onImgInput(event)"
+                    />
+                  </article>`
 
-  const strHTMLs = imgs.map(
-    img => `<article class="gallery-img" onclick="onImgSelect(${img.id})">
+  strHTMLs += imgs
+    .map(
+      img => `<article class="gallery-img" onclick="onImgSelect(${img.id})">
               <img src="${img.url}"  alt="" />
             </article> `
-  )
+    )
+    .join('')
 
-  document.querySelector('.gallery-imgs').innerHTML += strHTMLs.join('')
+  document.querySelector('.gallery-imgs').innerHTML = strHTMLs
 }
 
 function renderSavedMemes() {
@@ -68,6 +78,7 @@ function onShowGallery() {
   document.querySelector('.editor-container').style.display = 'none'
   document.querySelector('.memes').style.display = 'none'
 
+  renderGallery()
   initGMeme()
 }
 
