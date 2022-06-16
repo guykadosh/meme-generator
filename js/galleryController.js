@@ -12,16 +12,15 @@ function renderGallery() {
   document.querySelector('.gallery-imgs').innerHTML = strHTMLs.join('')
 }
 
-// TODO: render mini canvases ?
-
 function renderSavedMemes() {
-  const imgs = getImgs()
   const memes = getMemes()
 
   const strHTMLs = memes.map((meme, idx) => {
-    const img = imgs.find(img => img.id === meme.selectedImgId)
+    let img = new Image()
+    img.src = meme.dataImg
+
     return `<article class="gallery-img" onclick="onMemeSelect(${idx})">
-      <img src="${img.url}"  alt="" />
+      <img src="${img.src}"  alt="" />
     </article> `
   })
 

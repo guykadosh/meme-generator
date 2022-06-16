@@ -202,7 +202,9 @@ function dragLine(dx, dy) {
 }
 
 function saveMeme() {
+  gMeme.dataImg = gCanvas.toDataURL('image/jpeg')
   gMemes.push(JSON.parse(JSON.stringify(gMeme)))
+  // console.log(gCanvas.toDataURL('image/jpeg'))
 
   _saveMemesToStorage()
 }
@@ -220,7 +222,7 @@ function _createLine(txt, y = 100) {
     stroke: 'black',
     font: 'Impact',
     weight: '700',
-    width: 382.4,
+    width: 288,
     fontSize: 30,
     pos: { x: 10, y },
     isDrag: false,

@@ -1,3 +1,28 @@
+@media (min-width: 400px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  .main-layout {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .canvas-container {
+    width: 350px;
+    height: 350px;
+  }
+
+  .canvas {
+    border-radius: 12px;
+  }
+
+  .editor {
+    width: 350px;
+  }
+}
+
+/* MOBILE ONLY */
 @media (max-width: 800px) {
   .main-nav {
     position: fixed;
@@ -115,7 +140,7 @@
     letter-spacing: 0.2rem;
   }
 }
-@media (min-width: 1020px) {
+@media (min-width: 980px) {
   html {
     font-size: 100%;
   }
