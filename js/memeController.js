@@ -83,6 +83,10 @@ function onSetFontFamily(fontFamily) {
   renderMeme()
 }
 
+function onSaveMeme() {
+  saveMeme()
+}
+
 function generateRandomMeme() {
   const imgs = getImgs()
   const imgId = imgs[getRandomIntInc(0, imgs.length - 1)].id

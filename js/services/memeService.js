@@ -1,26 +1,12 @@
 'user strict'
 
-const memesSentences = [
-  'I never eat falafel',
-  'DOMS DOMS EVERYWHERE',
-  'Stop Using i in for loops',
-  'Armed in knowledge',
-  'Js error "Unexpected String"',
-  'One does not simply write js',
-  'I`m a simple man i see vanilla JS, i click like!',
-  'JS, HTML,CSS?? Even my momma can do that',
-  'May the force be with you',
-  'I know JS',
-  'JS Where everything is made up and the rules dont matter',
-  'Not sure if im good at programming or good at googling',
-  'But if we could',
-  'JS what is this?',
-  'Write hello world , add to cv 7 years experienced',
-]
-
 const gPlaceholder = 'Write Something Here...'
+const KEY = 'memesDB'
 
+let gMemes
 let gMeme
+
+_loadMemesFromStorage()
 
 function initGMeme() {
   gMeme = {
@@ -44,8 +30,16 @@ function initGMeme() {
   }
 }
 
+function getMemes() {
+  return gMemes
+}
+
 function getMeme() {
   return gMeme
+}
+
+function setMeme(memeIdx) {
+  gMeme = gMemes[memeIdx]
 }
 
 function getSelectedLine() {
@@ -114,7 +108,7 @@ function moveLine(diff) {
   return gMeme.lines[gMeme.selectedLineIdx]
 }
 
-function addLine(txt = getPlaceholder) {
+function addLine(txt = gPlaceholder) {
   let y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50
   if (y >= gCanvas.height - gMeme.lines[gMeme.selectedLineIdx].fontSize) y = 50
 
@@ -127,7 +121,7 @@ function addLine(txt = getPlaceholder) {
     font: 'Impact',
     weight: '700',
     width: 382.4,
-    fontSize: 40,
+    fontSize: 30,
     pos: { x: 10, y },
     isDrag: false,
   }
@@ -220,6 +214,22 @@ function dragLine(dx, dy) {
   line.pos.y += dy
 }
 
+function saveMeme() {
+  gMemes.push(JSON.parse(JSON.stringify(gMeme)))
+
+  _saveMemesToStorage()
+}
+
 function getPlaceholder() {
   return gPlaceholder
+}
+
+function _loadMemesFromStorage() {
+  gMemes = loadFromStorage(KEY)
+
+  if (!gMemes) gMemes = []
+}
+
+function _saveMemesToStorage() {
+  saveToStorage(KEY, gMemes)
 }

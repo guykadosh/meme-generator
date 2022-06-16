@@ -58,7 +58,9 @@
           <li>
             <a href="#" class="nav-link" onclick="onShowGallery()">Gallery</a>
           </li>
-          <li><a href="#" class="nav-link">Memes</a></li>
+          <li>
+            <a href="#" class="nav-link" onclick="onShowSavedMemes()">Memes</a>
+          </li>
           <li><a href="#" class="nav-link">About</a></li>
         </ul>
         <button onclick="toggleMenu()" class="menu-toggle">☰</button>
@@ -88,20 +90,19 @@
       </section>
 
       <!-- SAVED MEMES PAGE -->
-      <!-- <section class="memes">
-        <div class="gallery-memes main-layout grid"></div>
-      </section> -->
+      <section class="memes">
+        <div class="gallery-memes main-layout grid">
+          <!-- <article><img src="images/memes/10.jpg" alt="" /></article>
+          <article><img src="images/memes/10.jpg" alt="" /></article>
+          <article><img src="images/memes/10.jpg" alt="" /></article> -->
+        </div>
+      </section>
 
       <!-- MEME EDITOR SECTION -->
       <section class="editor-container main-layout flex justify-center">
         <!-- CANVAS -->
         <div class="canvas-container">
-          <canvas
-            class="canvas"
-            height="500"
-            width="500"
-            style="border: 1px solid black"
-          ></canvas>
+          <canvas class="canvas" height="500" width="500"></canvas>
         </div>
         <!-- EDITOR -->
         <div class="editor flex">
@@ -207,6 +208,7 @@
             <button class="btn-download">Download</button>
             <button class="btn-upload">Upload</button>
             <button class="btn-share">Share</button>
+            <button class="btn-save" onclick="onSaveMeme()">Save</button>
           </div>
         </div>
       </section>

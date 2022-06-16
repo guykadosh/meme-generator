@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.memes {
+  display: none;
+}
+
 .gallery-options {
   margin-bottom: 1.25rem;
   /* justify-content: space-between; */
@@ -12,7 +16,8 @@
   border-radius: 12px;
 }
 
-.gallery-imgs {
+.gallery-imgs,
+.gallery-memes {
   grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
   gap: 0.9rem;
   width: 100%;
@@ -24,14 +29,16 @@
   cursor: pointer;
 }
 
-.gallery-img img:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 3px 7px 1px rgb(0 0 0 / 20%);
+.gallery-img img,
+.gallery-memes img {
+  width: 100%;
   border-radius: 0.4rem;
 }
 
-.gallery-img img {
-  width: 100%;
+.gallery-img img:hover,
+.gallery-memes img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 3px 7px 1px rgb(0 0 0 / 20%);
   border-radius: 0.4rem;
 }
 
