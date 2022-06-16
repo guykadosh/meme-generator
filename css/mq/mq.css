@@ -10,7 +10,7 @@
 
   .canvas-container {
     width: 350px;
-    height: 350px;
+    /* height: 350px; */
   }
 
   .canvas {
@@ -106,6 +106,7 @@
 
   .editor-container {
     align-items: center;
+    justify-content: center;
     padding-top: 1.25rem;
   }
 
@@ -120,7 +121,8 @@
 
   .canvas-container {
     width: 400px;
-    height: 400px;
+    /* height: 400px; */
+    /* margin-right: 0; */
   }
 
   .editor {
@@ -146,7 +148,7 @@
   }
 
   .main-layout {
-    max-width: 980px;
+    max-width: 1200px;
   }
 
   .header {
@@ -159,14 +161,15 @@
   }
 
   .canvas-container {
-    width: 500px;
-    height: 500px;
-    margin-inline-end: 3rem;
+    width: 450px;
+    /* height: 450px; */
   }
 
   .editor {
-    width: 500px;
+    width: 450px;
+    margin-inline-start: 2rem;
   }
+
   .heading-primary-main {
     font-size: 2.25rem;
     letter-spacing: 1rem;

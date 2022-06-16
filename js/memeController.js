@@ -3,6 +3,17 @@
 function renderMeme() {
   const meme = getMeme()
   const img = getImg(meme.selectedImgId)
+
+  const imgDraw = new Image()
+  imgDraw.src = img.url
+
+  const elContainer = document.querySelector('.canvas-container')
+  console.log(imgDraw.height, imgDraw.width)
+  console.log(elContainer.height)
+  gCanvas.height = (gCanvas.width * imgDraw.height) / imgDraw.width
+  console.log(elContainer.height)
+  // resizeCanvas(false)
+
   gCtx.restore()
   drawImg(img.url)
 

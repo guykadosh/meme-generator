@@ -81,11 +81,11 @@ function onUp() {
   document.body.style.cursor = 'grab'
 }
 
-function resizeCanvas() {
+function resizeCanvas(doRender = true) {
   var elContainer = document.querySelector('.canvas-container')
   gCanvas.width = elContainer.offsetWidth
   gCanvas.height = elContainer.offsetHeight
-  renderMeme()
+  if (doRender) renderMeme()
 }
 
 function getEvPos(ev) {

@@ -19,6 +19,12 @@ const gImgs = [
   { id: 16, url: 'images/memes/16.jpg', keywords: ['tv', 'funny'] },
   { id: 17, url: 'images/memes/17.jpg', keywords: ['politics', 'evil'] },
   { id: 18, url: 'images/memes/18.jpg', keywords: ['tv', 'toy'] },
+  { id: 19, url: 'images/memes/19.jpg', keywords: ['tv', 'toy'] },
+  { id: 20, url: 'images/memes/20.jpg', keywords: ['tv', 'toy'] },
+  { id: 21, url: 'images/memes/21.jpg', keywords: ['tv', 'toy'] },
+  { id: 22, url: 'images/memes/22.jpg', keywords: ['tv', 'toy'] },
+  { id: 23, url: 'images/memes/23.jpg', keywords: ['tv', 'toy'] },
+  { id: 24, url: 'images/memes/24.jpg', keywords: ['tv', 'toy'] },
 ]
 
 const gKeywords = [
