@@ -1,6 +1,6 @@
 'use strict'
 
-function renderMeme(userImg = null) {
+function renderMeme(isDownload = false) {
   const meme = getMeme()
   const imgDraw = new Image()
   const img = getImg(meme.selectedImgId)
@@ -11,11 +11,9 @@ function renderMeme(userImg = null) {
   gCtx.restore()
   drawImg(imgDraw)
 
-  setTimeout(() => {
-    meme.lines.forEach(line => drawText(line))
-    drawSelectedRect(meme.lines[meme.selectedLineIdx])
-    gCtx.save()
-  }, 10)
+  meme.lines.forEach(line => drawText(line))
+  if (!isDownload) drawSelectedRect(meme.lines[meme.selectedLineIdx])
+  gCtx.save()
 }
 
 function renderEmojis() {
