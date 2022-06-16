@@ -27,9 +27,22 @@ function onLoadGallery() {
   document.querySelector('.hero').classList.add('hero-hidden')
   document.querySelector('.header').style.opacity = '1'
   document.querySelector('.gallery').style.display = 'flex'
+  document.querySelector('.footer').style.display = 'flex'
 }
 
 function onShowGallery() {
   document.querySelector('.gallery').style.display = 'flex'
   document.querySelector('.editor-container').style.display = 'none'
+
+  initGMeme()
+}
+
+function onGenerateRandomMeme() {
+  document.querySelector('.gallery').style.display = 'none'
+  document.querySelector('.editor-container').style.display = 'flex'
+
+  resizeCanvas()
+  generateRandomMeme()
+
+  renderMeme()
 }

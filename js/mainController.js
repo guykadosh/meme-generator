@@ -6,6 +6,8 @@ function init() {
   gCanvas = document.querySelector('.canvas')
   gCtx = gCanvas.getContext('2d')
 
+  initGMeme()
+
   // Events Listeners
   window.addEventListener('resize', resizeCanvas)
   addMouseListeners()
@@ -23,7 +25,7 @@ function addMouseListeners() {
 }
 
 function addTouchListeners() {
-  // gCanvas.addEventListener('touchmove', onMove)
+  gCanvas.addEventListener('touchmove', onMove)
   gCanvas.addEventListener('touchstart', onDown)
-  // gCanvas.addEventListener('touchend', onUp)
+  gCanvas.addEventListener('touchend', onUp)
 }

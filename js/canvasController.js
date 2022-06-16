@@ -22,9 +22,11 @@ function drawText(line) {
   gCtx.fillText(text, x, y)
 
   gCtx.strokeText(text, x, y)
+  setLineWidth(calcualteTextWidth(text), line)
 }
 
 function drawSelectedRect(line) {
+  console.log(line.width)
   const lineArea = getLineArea(line)
   gCtx.lineWidth = 1
   gCtx.strokeStyle = '#f8f9fa'
@@ -48,6 +50,10 @@ function onDown(ev) {
   if (lineIdx === -1) return
 
   setSelectedLine(lineIdx)
+
+  const line = getLineByIdx(lineIdx)
+  updateInputVal(line)
+
   renderMeme()
   setLineDrag(true)
   //Save the pos we start from

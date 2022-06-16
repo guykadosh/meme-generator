@@ -4,24 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- FONT-AWSOME -->
     <script
       defer
       src="https://kit.fontawesome.com/0d3f998bf1.js"
       crossorigin="anonymous"
     ></script>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css" />
-    <script defer src="js/mainController.js"></script>
+    <!-- SCRIPTS -->
+    <script defer src="js/services/storageService.js"></script>
+    <script defer src="js/services/utilService.js"></script>
     <script defer src="js/services/imgsService.js"></script>
     <script defer src="js/services/memeService.js"></script>
+    <script defer src="js/mainController.js"></script>
     <script defer src="js/memeController.js"></script>
     <script defer src="js/galleryController.js"></script>
     <script defer src="js/canvasController.js"></script>
+
     <title>GMemes</title>
   </head>
   <body onload="init()">
     <div class="main-screen" onclick="toggleMenu()"></div>
     <header class="header-container">
+      <!-- HERO SECTION - ON LOAD -->
       <div class="hero">
         <div class="logo-box">
           <img src="images/logo-white.png" alt="logo" class="logo" />
@@ -42,6 +50,7 @@
         </div>
       </div>
 
+      <!-- HEADER -->
       <div class="header flex space-between align-center">
         <img src="images/logo.png" alt="logo" class="logo-header" />
 
@@ -55,7 +64,10 @@
         <button onclick="toggleMenu()" class="menu-toggle">☰</button>
       </div>
     </header>
+
+    <!-- MAIN -->
     <main>
+      <!-- GALERRY -->
       <section class="gallery main-layout">
         <div class="gallery-options flex">
           <div class="search">
@@ -67,16 +79,20 @@
               placeholder="Start typing..."
             />
           </div>
-          <button>Brave</button>
-          <div class="tags">Funny cute</div>
+          <button class="btn btn-random" onclick="onGenerateRandomMeme()">
+            I'm Flexible
+          </button>
+          <div class="tags">Funny cute baby</div>
         </div>
         <div class="gallery-imgs grid"></div>
       </section>
 
+      <!-- SAVED MEMES PAGE -->
       <!-- <section class="memes">
         <div class="gallery-memes main-layout grid"></div>
       </section> -->
 
+      <!-- MEME EDITOR SECTION -->
       <section class="editor-container main-layout flex justify-center">
         <!-- CANVAS -->
         <div class="canvas-container">

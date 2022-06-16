@@ -1,6 +1,6 @@
 .main-layout {
   max-width: 400px;
   margin: 0 auto;
-
+  padding-bottom: 2rem;
   /* border: 1px solid #e9ecef; */
 }

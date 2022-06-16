@@ -1,10 +1,11 @@
 .footer {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 2rem;
   background-color: #c5f6fa;
+  text-transform: uppercase;
 }
 
 .footer-logo {

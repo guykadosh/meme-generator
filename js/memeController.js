@@ -1,9 +1,5 @@
 'use strict'
 
-// TODO: Code a function renderMeme() that renders an image
-// on the canvas and a line of text on top
-
-// renderMeme()
 function renderMeme() {
   const meme = getMeme()
   const img = getImg(meme.selectedImgId)
@@ -48,14 +44,7 @@ function onChangeFontSize(diff) {
 function onSwitchTextLine() {
   const line = switchSelectedLine()
 
-  const elInput = document.querySelector('.text-line')
-
-  if (line.txt !== getPlaceholder()) {
-    elInput.value = line.txt
-  } else {
-    elInput.value = ''
-    elInput.setAttribute('placeholder', getPlaceholder())
-  }
+  updateInputVal(line)
 
   renderMeme()
 }
@@ -92,4 +81,49 @@ function onSetFontFamily(fontFamily) {
   setFontFamily(fontFamily)
 
   renderMeme()
+}
+
+function generateRandomMeme() {
+  const imgs = getImgs()
+  const imgId = imgs[getRandomIntInc(0, imgs.length - 1)].id
+  setImg(imgId)
+
+  // Randomize first line
+  generateRandomLine(0)
+
+  const num = getRandomIntInc(0, 1)
+
+  // if num = 1 add another sentence
+  if (num) {
+    addLine(getRandomSentence())
+    generateRandomLine(1)
+  }
+}
+
+function generateRandomLine(lineIdx) {
+  // console.log(lineIdx)
+  setTextLine(getRandomSentence(), lineIdx)
+  setFontSize(getRandomIntInc(20, 40), lineIdx)
+  setStrokeColor(getRandomColor(), lineIdx)
+  setFillColor(getRandomColor(), lineIdx)
+}
+
+function calcualteTextWidth(txt) {
+  const metrics = gCtx.measureText(txt)
+  const width =
+    Math.abs(metrics.actualBoundingBoxLeft) +
+    Math.abs(metrics.actualBoundingBoxRight)
+
+  return width
+}
+
+function updateInputVal(line) {
+  const elInput = document.querySelector('.text-line')
+
+  if (line.txt !== getPlaceholder()) {
+    elInput.value = line.txt
+  } else {
+    elInput.value = ''
+    elInput.setAttribute('placeholder', getPlaceholder())
+  }
 }
