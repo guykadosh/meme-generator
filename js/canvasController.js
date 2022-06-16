@@ -28,7 +28,7 @@ function drawSelectedRect(line) {
   gCtx.strokeRect(
     lineArea.x - 5,
     lineArea.y - lineArea.height + 5,
-    lineArea.width,
+    lineArea.width + 5,
     lineArea.height
   )
 
