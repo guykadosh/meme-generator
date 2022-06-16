@@ -9,7 +9,7 @@ function renderGallery() {
             </article> `
   )
 
-  document.querySelector('.gallery-imgs').innerHTML = strHTMLs.join('')
+  document.querySelector('.gallery-imgs').innerHTML += strHTMLs.join('')
 }
 
 function renderSavedMemes() {
@@ -93,4 +93,30 @@ function onSetFilterText(txt) {
   setFilterByTxt(txt)
 
   renderGallery()
+}
+
+function onImgInput(ev) {
+  loadImageFromInput(ev, onUploadImg)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+  var reader = new FileReader()
+  //After we read the file
+  reader.onload = function (event) {
+    var img = new Image() // Create a new html img element
+    img.src = event.target.result // Set the img src to the img file we read
+    //Run the callBack func , To render the img on the canvas
+    img.onload = onImageReady.bind(null, img)
+  }
+  reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+}
+
+function onUploadImg(img) {
+  const imgItem = setUploadedImg(img)
+  setImg(imgItem.id)
+
+  document.querySelector('.gallery').style.display = 'none'
+  document.querySelector('.editor-container').style.display = 'flex'
+
+  resizeCanvas()
 }

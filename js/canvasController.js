@@ -4,12 +4,8 @@ let gStartPos
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 // Drawing
-function drawImg(url) {
-  var img = new Image()
-  img.src = url
-  img.onload = () => {
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-  }
+function drawImg(img) {
+  gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
 }
 
 function drawText(line) {
@@ -81,11 +77,11 @@ function onUp() {
   document.body.style.cursor = 'grab'
 }
 
-function resizeCanvas(doRender = true) {
+function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container')
   gCanvas.width = elContainer.offsetWidth
   gCanvas.height = elContainer.offsetHeight
-  if (doRender) renderMeme()
+  renderMeme()
 }
 
 function getEvPos(ev) {

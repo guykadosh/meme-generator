@@ -1,21 +1,15 @@
 'use strict'
 
-function renderMeme() {
+function renderMeme(userImg = null) {
   const meme = getMeme()
-  const img = getImg(meme.selectedImgId)
-
   const imgDraw = new Image()
+  const img = getImg(meme.selectedImgId)
   imgDraw.src = img.url
 
-  const elContainer = document.querySelector('.canvas-container')
-  console.log(imgDraw.height, imgDraw.width)
-  console.log(elContainer.height)
   gCanvas.height = (gCanvas.width * imgDraw.height) / imgDraw.width
-  console.log(elContainer.height)
-  // resizeCanvas(false)
 
   gCtx.restore()
-  drawImg(img.url)
+  drawImg(imgDraw)
 
   setTimeout(() => {
     meme.lines.forEach(line => drawText(line))

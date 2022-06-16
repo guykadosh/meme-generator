@@ -27,6 +27,8 @@ const gImgs = [
   { id: 24, url: 'images/memes/24.jpg', keywords: ['tv', 'toy'] },
 ]
 
+let gId = 25
+
 const gKeywords = [
   'tv',
   'politics',
@@ -71,4 +73,16 @@ function getKeywords() {
 function setFilterByTxt(txt) {
   gFilterBy.txt = txt
   console.log(gFilterBy)
+}
+
+function setUploadedImg(img) {
+  const imgItem = {
+    id: gId++,
+    url: img.src,
+    keywords: ['tv', 'toy'],
+  }
+
+  gImgs.push(imgItem)
+
+  return imgItem
 }
