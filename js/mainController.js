@@ -6,6 +6,9 @@ function init() {
   gCanvas = document.querySelector('.canvas')
   gCtx = gCanvas.getContext('2d')
 
+  renderGallery()
+  renderSavedMemes()
+  renderDatalistKeywords()
   initGMeme()
 
   // Events Listeners

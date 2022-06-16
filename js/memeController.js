@@ -87,6 +87,7 @@ function onSaveMeme() {
   saveMeme()
 }
 
+// TODO: Resize text so it wont go out of canvas
 function generateRandomMeme() {
   const imgs = getImgs()
   const imgId = imgs[getRandomIntInc(0, imgs.length - 1)].id
@@ -105,7 +106,6 @@ function generateRandomMeme() {
 }
 
 function generateRandomLine(lineIdx) {
-  // console.log(lineIdx)
   setTextLine(getRandomSentence(), lineIdx)
   setFontSize(getRandomIntInc(20, 40), lineIdx)
   setStrokeColor(getRandomColor(), lineIdx)

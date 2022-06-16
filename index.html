@@ -73,12 +73,17 @@
       <section class="gallery main-layout">
         <div class="gallery-options flex">
           <div class="search">
+            <label for="filter-txt"></label>
             <i class="icon fa-solid fa-magnifying-glass"></i>
+            <datalist id="keywords-list" class="keywords"></datalist>
             <input
+              list="keywords-list"
               class="input filter-txt-input"
               type="text"
               name="filter-txt"
+              id="filter-txt"
               placeholder="Start typing..."
+              oninput="onSetFilterText(this.value)"
             />
           </div>
           <button class="btn btn-random" onclick="onGenerateRandomMeme()">

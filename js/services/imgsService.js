@@ -16,15 +16,53 @@ const gImgs = [
   { id: 13, url: 'images/memes/13.jpg', keywords: ['tv', 'inspire'] },
   { id: 14, url: 'images/memes/14.jpg', keywords: ['tv', 'cool'] },
   { id: 15, url: 'images/memes/15.jpg', keywords: ['tv', 'cool'] },
-  { id: 16, url: 'images/memes/16.jpg', keywords: ['tv', 'fummy'] },
+  { id: 16, url: 'images/memes/16.jpg', keywords: ['tv', 'funny'] },
   { id: 17, url: 'images/memes/17.jpg', keywords: ['politics', 'evil'] },
   { id: 18, url: 'images/memes/18.jpg', keywords: ['tv', 'toy'] },
 ]
 
+const gKeywords = [
+  'tv',
+  'politics',
+  'evil',
+  'baby',
+  'funny',
+  'cute',
+  'cool',
+  'inspire',
+  'clown',
+  'lovely',
+  'popular',
+]
+
+const gFilterBy = {
+  txt: '',
+  key: '',
+}
+
 function getImgs() {
-  return gImgs
+  let imgs = gImgs
+
+  if (gFilterBy.txt) {
+    console.log('i got in')
+    imgs = imgs.filter(img =>
+      img.keywords.some(key => key.includes(gFilterBy.txt))
+    )
+    console.log(imgs)
+  }
+
+  return imgs
 }
 
 function getImg(imgId) {
   return gImgs.find(img => img.id === imgId)
+}
+
+function getKeywords() {
+  return gKeywords
+}
+
+function setFilterByTxt(txt) {
+  gFilterBy.txt = txt
+  console.log(gFilterBy)
 }

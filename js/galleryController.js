@@ -1,6 +1,5 @@
 'use strict'
 
-renderGallery()
 function renderGallery() {
   const imgs = getImgs()
 
@@ -13,7 +12,8 @@ function renderGallery() {
   document.querySelector('.gallery-imgs').innerHTML = strHTMLs.join('')
 }
 
-renderSavedMemes()
+// TODO: render mini canvases ?
+
 function renderSavedMemes() {
   const imgs = getImgs()
   const memes = getMemes()
@@ -25,6 +25,15 @@ function renderSavedMemes() {
   )
 
   document.querySelector('.gallery-memes').innerHTML = strHTMLs.join('')
+}
+
+function renderDatalistKeywords() {
+  const keywords = getKeywords()
+
+  const strHTMLS = keywords.map(keyword => `<option value="${keyword}" />`)
+
+  console.log(strHTMLS.join(''))
+  document.querySelector('.keywords').innerHTML = strHTMLS.join('')
 }
 
 function onMemeSelect(memeIdx) {
@@ -76,4 +85,10 @@ function onGenerateRandomMeme() {
   generateRandomMeme()
 
   renderMeme()
+}
+
+function onSetFilterText(txt) {
+  setFilterByTxt(txt)
+
+  renderGallery()
 }
