@@ -162,7 +162,7 @@
 
   .canvas-container {
     width: 450px;
-    /* height: 450px; */
+    margin-bottom: 0;
   }
 
   .editor {
