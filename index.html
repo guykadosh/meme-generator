@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/styles.css" />
     <!-- SCRIPTS -->
     <script defer src="js/services/storageService.js"></script>
+    <script defer src="js/services/shareService.js"></script>
     <script defer src="js/services/utilService.js"></script>
     <script defer src="js/services/imgsService.js"></script>
     <script defer src="js/services/memeService.js"></script>
@@ -206,11 +207,20 @@
           </div>
           <div class="emoji-selector"></div>
           <div class="share-btns">
-            <button class="btn-download">Download</button>
-            <button class="btn-upload">Upload</button>
-            <button class="btn-share">Share</button>
+            <button class="btn-download">
+              <a
+                href="#"
+                class="btn"
+                onclick="downloadImg(this)"
+                download="my-img.jpg"
+                >Download</a
+              >
+            </button>
+            <button class="btn-upload" onclick="uploadImg()">Upload</button>
+            <button class="btn-share share-container"></button>
             <button class="btn-save" onclick="onSaveMeme()">Save</button>
           </div>
+          <div><p class="user-msg"></p></div>
         </div>
       </section>
     </main>

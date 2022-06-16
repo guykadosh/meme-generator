@@ -22,7 +22,6 @@ function drawText(line) {
   gCtx.fillText(text, x, y)
 
   gCtx.strokeText(text, x, y)
-  setLineWidth(calcualteTextWidth(text), line)
 }
 
 function drawSelectedRect(line) {

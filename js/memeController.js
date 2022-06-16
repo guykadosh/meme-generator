@@ -45,7 +45,7 @@ function onChangeStrokeColor(color) {
 function onChangeFontSize(diff) {
   const line = changeFontSize(diff)
 
-  setLineWidth(gCtx.measureText(line.txt).width)
+  setLineWidth(calcualteTextWidth(line))
 
   renderMeme()
 }
@@ -70,7 +70,7 @@ function onAddLine(txt = '') {
     .querySelector('.text-line')
     .setAttribute('placeholder', getPlaceholder())
 
-  setLineWidth(gCtx.measureText(line.txt).width)
+  setLineWidth(calcualteTextWidth(line))
   renderMeme()
 }
 
@@ -96,7 +96,6 @@ function onSaveMeme() {
   saveMeme()
 }
 
-// TODO: Resize text so it wont go out of canvas
 function generateRandomMeme() {
   const imgs = getImgs()
   const imgId = imgs[getRandomIntInc(0, imgs.length - 1)].id
@@ -105,10 +104,11 @@ function generateRandomMeme() {
   // Randomize first line
   generateRandomLine(0)
 
-  const num = getRandomIntInc(0, 1)
+  const num = getRandomIntInc(0, 2)
 
-  // if num = 1 add another sentence
-  if (num) {
+  console.log(num)
+  // if num = 2 add another sentence
+  if (num === 2) {
     addLine(getRandomSentence())
     generateRandomLine(1)
   }
@@ -119,10 +119,20 @@ function generateRandomLine(lineIdx) {
   setFontSize(getRandomIntInc(20, 40), lineIdx)
   setStrokeColor(getRandomColor(), lineIdx)
   setFillColor(getRandomColor(), lineIdx)
+
+  const line = getLineByIdx(lineIdx)
+  setLineWidth(calcualteTextWidth(line), line)
+
+  // Resize until fits the canvas
+  while (line.width > gCanvas.width) {
+    line.fontSize -= 2
+    setLineWidth(calcualteTextWidth(line), line)
+  }
 }
 
-function calcualteTextWidth(txt) {
-  const metrics = gCtx.measureText(txt)
+function calcualteTextWidth(line) {
+  gCtx.font = `${line.fontSize}px ${line.font}`
+  const metrics = gCtx.measureText(line.txt)
   const width =
     Math.abs(metrics.actualBoundingBoxLeft) +
     Math.abs(metrics.actualBoundingBoxRight)

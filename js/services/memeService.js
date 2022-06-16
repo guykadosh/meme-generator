@@ -138,16 +138,12 @@ function getLineWidth() {
 }
 
 function getLineArea(line) {
-  // const line = gMeme.lines[lineIdx]
-
-  const lineArea = {
+  return {
     x: line.pos.x,
     y: line.pos.y,
-    width: line.width,
+    width: line.width + 5,
     height: line.fontSize + 5,
   }
-
-  return lineArea
 }
 
 function getClickedLine({ x, y }) {
@@ -166,7 +162,6 @@ function getClickedLine({ x, y }) {
 }
 
 function setLineWidth(width, line = gMeme.lines[gMeme.selectedLineIdx]) {
-  // gMeme.lines[lineIdx].width = width
   line.width = width
   return width
 }
@@ -231,13 +226,6 @@ function _createLine(txt, y = 100) {
     isDrag: false,
   }
 }
-
-// function _createEmoji(emoji) {
-//   return {
-//     emoji,
-//     fontSize
-//   }
-// }
 
 function _loadMemesFromStorage() {
   gMemes = loadFromStorage(KEY)
