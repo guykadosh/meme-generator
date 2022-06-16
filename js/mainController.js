@@ -8,6 +8,7 @@ function init() {
 
   renderGallery()
   renderSavedMemes()
+  renderKeywords()
   renderDatalistKeywords()
   renderEmojis()
   initGMeme()

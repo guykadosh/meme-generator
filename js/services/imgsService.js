@@ -29,20 +29,6 @@ const gImgs = [
 
 let gId = 25
 
-const gKeywords = [
-  'tv',
-  'politics',
-  'evil',
-  'baby',
-  'funny',
-  'cute',
-  'cool',
-  'inspire',
-  'clown',
-  'lovely',
-  'popular',
-]
-
 const gFilterBy = {
   txt: '',
   key: '',
@@ -64,10 +50,6 @@ function getImgs() {
 
 function getImg(imgId) {
   return gImgs.find(img => img.id === imgId)
-}
-
-function getKeywords() {
-  return gKeywords
 }
 
 function setFilterByTxt(txt) {

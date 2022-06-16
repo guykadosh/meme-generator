@@ -69,3 +69,11 @@
   position: relative;
   margin-inline-end: 1.5rem;
 }
+
+.pop-keywords {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* margin-inline-start: 2rem; */
+  width: 100%;
+}

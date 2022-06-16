@@ -18,6 +18,7 @@
     <script defer src="js/services/storageService.js"></script>
     <script defer src="js/services/shareService.js"></script>
     <script defer src="js/services/utilService.js"></script>
+    <script defer src="js/services/keywordsService.js"></script>
     <script defer src="js/services/imgsService.js"></script>
     <script defer src="js/services/memeService.js"></script>
     <script defer src="js/mainController.js"></script>
@@ -44,7 +45,7 @@
           </h1>
           <a
             href="#"
-            class="btn btn-white btn-animated"
+            class="btn-hero btn-white btn-animated"
             onclick="onLoadGallery()"
             >Start Generate</a
           >
@@ -85,10 +86,10 @@
               oninput="onSetFilterText(this.value)"
             />
           </div>
+          <div class="pop-keywords">Funny cute baby</div>
           <button class="btn-random" onclick="onGenerateRandomMeme()">
             I'm Flexible
           </button>
-          <div class="tags">Funny cute baby</div>
         </div>
         <!-- IMAGES  -->
         <div class="gallery-imgs grid"></div>

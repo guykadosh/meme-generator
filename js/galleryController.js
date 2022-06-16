@@ -37,6 +37,19 @@ function renderSavedMemes() {
   document.querySelector('.gallery-memes').innerHTML = strHTMLs.join('')
 }
 
+function renderKeywords() {
+  const keywords = getKeywordsMap()
+
+  console.log(keywords)
+
+  let strHTMLs = ''
+  for (const key in keywords) {
+    strHTMLs += `<p class="keyword" onclick="onKeywordClick('${key}')" style="font-size: ${keywords[key]}px; cursor: pointer;">${key}</p>`
+  }
+
+  document.querySelector('.pop-keywords').innerHTML = strHTMLs
+}
+
 function renderDatalistKeywords() {
   const keywords = getKeywords()
 
@@ -130,4 +143,12 @@ function onUploadImg(img) {
   document.querySelector('.editor-container').style.display = 'flex'
 
   resizeCanvas()
+}
+
+function onKeywordClick(key) {
+  increaseClickCount(key)
+
+  document.querySelector('.filter-txt-input').value = key
+  onSetFilterText(key)
+  renderKeywords()
 }

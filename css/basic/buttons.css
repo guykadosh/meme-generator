@@ -1,5 +1,5 @@
-.btn:link,
-.btn:visited {
+.btn-hero:link,
+.btn-hero:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 0.6em 0.9em;
@@ -9,12 +9,12 @@
   position: relative;
 }
 
-.btn:hover {
+.btn-hero:hover {
   transform: translateY(-3px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
-.btn:active {
+.btn-hero:active {
   transform: translateY(-1px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
@@ -24,7 +24,7 @@
   color: #777;
 }
 
-.btn::after {
+.btn-hero::after {
   content: '';
   display: inline-block;
   height: 100%;
@@ -42,7 +42,7 @@
   background-color: #fff;
 }
 
-.btn:hover::after {
+.btn-hero:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
 }
@@ -84,4 +84,7 @@
   color: #9e9ea7;
   width: 1rem;
   height: 1.5rem;
+}
+
+.share-btns button {
 }
