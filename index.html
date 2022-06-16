@@ -87,8 +87,12 @@
             />
           </div>
           <div class="pop-keywords">Funny cute baby</div>
-          <button class="btn-random" onclick="onGenerateRandomMeme()">
-            I'm Flexible
+          <button
+            class="btn-option btn-random"
+            onclick="onGenerateRandomMeme()"
+          >
+            <span class="tooltip">Random Meme</span>
+            <span> <i class="fa-solid fa-shuffle"></i> </span>
           </button>
         </div>
         <!-- IMAGES  -->
@@ -121,30 +125,58 @@
               href="#"
               class="btn-option text-switch"
               onclick="onSwitchTextLine()"
+              title="switch text line"
             >
-              <img src="images/options/up-and-down.png" alt="" />
+              <span class="tooltip">Switch Text</span>
+              <span>
+                <i class="fa-solid fa-arrows-up-down"></i>
+              </span>
             </a>
 
             <a
               href="#"
               class="btn-option text-switch"
               onclick="onMoveLine(-15)"
+              title="Move Up"
             >
-              <img src="images/options/arrow-up.png" alt="" />
+              <span class="tooltip">Move Up</span>
+              <span>
+                <i class="fa-solid fa-arrow-up"></i>
+              </span>
             </a>
 
-            <a href="#" class="btn-option text-switch" onclick="onMoveLine(15)">
-              <img src="images/options/arrow-down.png" alt="" />
+            <a
+              href="#"
+              class="btn-option text-switch"
+              onclick="onMoveLine(15)"
+              title="Move Down"
+            >
+              <span class="tooltip">Move Down</span>
+              <span>
+                <i class="fa-solid fa-arrow-down"></i>
+              </span>
             </a>
-            <a href="#" class="btn-option text-add" onclick="onAddLine()">
-              <img src="images/options/add.png" alt="" />
+            <a
+              href="#"
+              class="btn-option text-add"
+              onclick="onAddLine()"
+              title="Add Line"
+            >
+              <span class="tooltip">Add Text</span>
+              <span>
+                <i class="fa-solid fa-plus"></i>
+              </span>
             </a>
-            <a href="#" class="btn-option text-delete">
-              <img
-                src="images/options/trash.png"
-                alt=""
-                onclick="onRemoveLine()"
-              />
+            <a
+              href="#"
+              class="btn-option text-delete"
+              onclick="onRemoveLine()"
+              title="Remove Line"
+            >
+              <span class="tooltip">Remove Line</span>
+              <span>
+                <i class="fa-solid fa-trash-can"></i>
+              </span>
             </a>
           </div>
 
@@ -154,72 +186,107 @@
               class="btn-option text-increase"
               onclick="onChangeFontSize(2)"
             >
-              <img src="images/options/increase-font.png" alt="" />
+              <span class="tooltip">Increase Font Size</span>
+              <span> A+ </span>
             </a>
             <a
               href="#"
               class="btn-option text-decrease"
               onclick="onChangeFontSize(-2)"
             >
-              <img src="images/options/decrease-font.png" alt="" />
+              <span class="tooltip">Decrease Font Size</span>
+              <span> A- </span>
             </a>
-            <a href="#" class="btn-option" title="Align Left">
-              <img
-                src="images/options/align-to-left.png"
-                alt=""
-                onclick="onSetTextAlign('start')"
-              />
+            <a
+              href="#"
+              class="btn-option"
+              title="Align Left"
+              onclick="onSetTextAlign('start')"
+            >
+              <span class="tooltip">Align Left</span>
+              <span>
+                <i class="fa-solid fa-align-left"></i>
+              </span>
             </a>
-            <a href="#" class="btn-option" title="Align Center">
-              <img
-                src="images/options/center-text-alignment.png"
-                alt=""
-                onclick="onSetTextAlign('center')"
-              />
+            <a
+              href="#"
+              class="btn-option"
+              title="Align Center"
+              onclick="onSetTextAlign('center')"
+            >
+              <span class="tooltip">Align Center</span>
+              <span>
+                <i class="fa-solid fa-align-center"></i>
+              </span>
             </a>
-            <a href="#" class="btn-option" title="Align Right">
-              <img
-                src="images/options/align-to-right.png"
-                alt=""
-                onclick="onSetTextAlign('end')"
-              />
+            <a
+              href="#"
+              class="btn-option"
+              title="Align Right"
+              onclick="onSetTextAlign('end')"
+            >
+              <span class="tooltip">Align Right</span>
+              <span>
+                <i class="fa-solid fa-align-right"></i>
+              </span>
             </a>
             <select class="font-select" onchange="onSetFontFamily(this.value)">
               <option value="Impact">Impact</option>
               <option value="Arial">Ariel</option>
             </select>
-            <!-- <a href="#" class="btn-option text-weight"> A </a>
-            <a href="#" class="btn-option text-color"> -->
-            <!-- <img src="images/options/paint-board-and-brush.png" alt="" />
-            </a> -->
-            <input
-              type="color"
-              name="fill-color"
-              value="#ffffff"
-              class="color-picker"
-              oninput="onChangeFillColor(this.value)"
-            />
-            <input
-              type="color"
-              name="stroke-color"
-              class="color-picker"
-              oninput="onChangeStrokeColor(this.value)"
-            />
+            <span class="btn-option">
+              <span class="tooltip">Text Color</span>
+              <span>
+                <input
+                  type="color"
+                  name="fill-color"
+                  value="#ffffff"
+                  class="color-picker btn-option"
+                  oninput="onChangeFillColor(this.value)"
+                />
+              </span>
+            </span>
+
+            <span class="btn-option">
+              <span class="tooltip">Stroke Color</span>
+              <span>
+                <input
+                  type="color"
+                  name="stroke-color"
+                  class="color-picker btn-option"
+                  oninput="onChangeStrokeColor(this.value)"
+                />
+              </span>
+            </span>
           </div>
           <div class="emoji-selector"></div>
           <div class="share-btns">
-            <button class="btn-download">
-              <a
-                href="#"
-                class="btn"
-                onclick="downloadImg(this)"
-                download="my-img.jpg"
-                >Download</a
-              >
+            <button class="btn-download btn-share">
+              <a href="#" onclick="downloadImg(this)" download="my-img.jpg">
+                <span class="label">Download</span>
+                <span class="icon">
+                  <i class="fa-solid fa-download"></i>
+                </span>
+              </a>
             </button>
-            <button class="btn-upload" onclick="uploadImg()">Upload</button>
-            <button class="btn-share share-container"></button>
-            <button class="btn-save" onclick="onSaveMeme()">Save</button>
+            <button class="btn-share" onclick="uploadImg()">
+              <span class="label">Upload</span>
+              <span class="icon">
+                <i class="fa-solid fa-upload"></i>
+              </span>
+            </button>
+            <button class="btn-share share-container">
+              <span class="label">Share</span>
+              <span class="icon">
+                <i class="fa-solid fa-share-nodes"></i>
+              </span>
+            </button>
+            <button class="btn-share" onclick="onSaveMeme()">
+              <span class="label">Save</span>
+              <span class="icon">
+                <i class="fa-solid fa-floppy-disk"></i>
+              </span>
+            </button>
           </div>
           <div><p class="user-msg"></p></div>
         </div>

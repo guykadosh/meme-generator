@@ -11,9 +11,13 @@ function uploadImg() {
     ).innerText = `Your photo is available here: ${uploadedImgUrl}`
     //Create a link that on click will make a post in facebook with the image we uploaded
     document.querySelector('.share-container').innerHTML = `
-      <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
-         Share   
-      </a>`
+    <span class="label"><a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+    Share   
+      </a></span>
+    <span class="icon">
+      <i class="fa-solid fa-share-nodes"></i>
+    </span>
+      `
   }
   //Send the image to the server
   doUploadImg(imgDataUrl, onSuccess)
