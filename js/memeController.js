@@ -13,6 +13,15 @@ function renderMeme() {
   }, 10)
 }
 
+function renderEmojis() {
+  const emojis = getEmojis()
+  const strHTMLs = emojis.map(
+    emoji => `<span onclick="onAddLine('${emoji}')">${emoji}</span>`
+  )
+
+  document.querySelector('.emoji-selector').innerHTML = strHTMLs.join('')
+}
+
 function onSetTextLine(txt) {
   const line = setTextLine(txt)
 
@@ -55,8 +64,8 @@ function onMoveLine(diff) {
   renderMeme()
 }
 
-function onAddLine() {
-  const line = addLine()
+function onAddLine(txt = '') {
+  const line = txt ? addLine(txt) : addLine()
   document
     .querySelector('.text-line')
     .setAttribute('placeholder', getPlaceholder())

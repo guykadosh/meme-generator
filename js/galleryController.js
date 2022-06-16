@@ -18,11 +18,12 @@ function renderSavedMemes() {
   const imgs = getImgs()
   const memes = getMemes()
 
-  const strHTMLs = memes.map(
-    (meme, idx) => `<article class="gallery-img" onclick="onMemeSelect(${idx})">
-              <img src="${imgs[meme.selectedImgId].url}"  alt="" />
-            </article> `
-  )
+  const strHTMLs = memes.map((meme, idx) => {
+    const img = imgs.find(img => img.id === meme.selectedImgId)
+    return `<article class="gallery-img" onclick="onMemeSelect(${idx})">
+      <img src="${img.url}"  alt="" />
+    </article> `
+  })
 
   document.querySelector('.gallery-memes').innerHTML = strHTMLs.join('')
 }
@@ -33,7 +34,7 @@ function renderDatalistKeywords() {
   const strHTMLS = keywords.map(keyword => `<option value="${keyword}" />`)
 
   console.log(strHTMLS.join(''))
-  document.querySelector('.keywords').innerHTML = strHTMLS.join('')
+  document.querySelector('#keywords-list').innerHTML = strHTMLS.join('')
 }
 
 function onMemeSelect(memeIdx) {
@@ -75,6 +76,8 @@ function onShowSavedMemes() {
   document.querySelector('.gallery').style.display = 'none'
   document.querySelector('.editor-container').style.display = 'none'
   document.querySelector('.memes').style.display = 'block'
+
+  renderSavedMemes()
 }
 
 function onGenerateRandomMeme() {

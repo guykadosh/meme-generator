@@ -9,6 +9,7 @@ function init() {
   renderGallery()
   renderSavedMemes()
   renderDatalistKeywords()
+  renderEmojis()
   initGMeme()
 
   // Events Listeners

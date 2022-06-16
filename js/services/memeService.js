@@ -3,6 +3,20 @@
 const gPlaceholder = 'Write Something Here...'
 const KEY = 'memesDB'
 
+const gEmojis = [
+  '😎',
+  '😁',
+  '😍',
+  '🤣',
+  '😪',
+  '💩',
+  '🤬',
+  '🙈',
+  '🙉',
+  '🙊',
+  '🤐',
+]
+
 let gMemes
 let gMeme
 
@@ -12,21 +26,7 @@ function initGMeme() {
   gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [
-      {
-        txt: gPlaceholder,
-        size: 20,
-        align: 'start',
-        color: '#fff',
-        stroke: 'black',
-        weight: '700',
-        font: 'Impact',
-        fontSize: 30,
-        pos: { x: 10, y: 100 },
-        width: 382.4,
-        isDrag: false,
-      },
-    ],
+    lines: [_createLine(gPlaceholder)],
   }
 }
 
@@ -36,6 +36,10 @@ function getMemes() {
 
 function getMeme() {
   return gMeme
+}
+
+function getEmojis() {
+  return gEmojis
 }
 
 function setMeme(memeIdx) {
@@ -112,19 +116,7 @@ function addLine(txt = gPlaceholder) {
   let y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50
   if (y >= gCanvas.height - gMeme.lines[gMeme.selectedLineIdx].fontSize) y = 50
 
-  const line = {
-    txt,
-    size: 20,
-    align: 'start',
-    color: '#fff',
-    stroke: 'black',
-    font: 'Impact',
-    weight: '700',
-    width: 382.4,
-    fontSize: 30,
-    pos: { x: 10, y },
-    isDrag: false,
-  }
+  const line = _createLine(txt, y)
 
   gMeme.lines.push(line)
   gMeme.selectedLineIdx = gMeme.lines.length - 1
@@ -223,6 +215,29 @@ function saveMeme() {
 function getPlaceholder() {
   return gPlaceholder
 }
+
+function _createLine(txt, y = 100) {
+  return {
+    txt,
+    size: 20,
+    align: 'start',
+    color: '#fff',
+    stroke: 'black',
+    font: 'Impact',
+    weight: '700',
+    width: 382.4,
+    fontSize: 30,
+    pos: { x: 10, y },
+    isDrag: false,
+  }
+}
+
+// function _createEmoji(emoji) {
+//   return {
+//     emoji,
+//     fontSize
+//   }
+// }
 
 function _loadMemesFromStorage() {
   gMemes = loadFromStorage(KEY)

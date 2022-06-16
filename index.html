@@ -73,7 +73,6 @@
       <section class="gallery main-layout">
         <div class="gallery-options flex">
           <div class="search">
-            <label for="filter-txt"></label>
             <i class="icon fa-solid fa-magnifying-glass"></i>
             <datalist id="keywords-list" class="keywords"></datalist>
             <input
@@ -81,26 +80,22 @@
               class="input filter-txt-input"
               type="text"
               name="filter-txt"
-              id="filter-txt"
               placeholder="Start typing..."
               oninput="onSetFilterText(this.value)"
             />
           </div>
-          <button class="btn btn-random" onclick="onGenerateRandomMeme()">
+          <button class="btn-random" onclick="onGenerateRandomMeme()">
             I'm Flexible
           </button>
           <div class="tags">Funny cute baby</div>
         </div>
+        <!-- IMAGES  -->
         <div class="gallery-imgs grid"></div>
       </section>
 
       <!-- SAVED MEMES PAGE -->
       <section class="memes">
-        <div class="gallery-memes main-layout grid">
-          <!-- <article><img src="images/memes/10.jpg" alt="" /></article>
-          <article><img src="images/memes/10.jpg" alt="" /></article>
-          <article><img src="images/memes/10.jpg" alt="" /></article> -->
-        </div>
+        <div class="gallery-memes main-layout grid"></div>
       </section>
 
       <!-- MEME EDITOR SECTION -->
@@ -109,6 +104,7 @@
         <div class="canvas-container">
           <canvas class="canvas" height="500" width="500"></canvas>
         </div>
+
         <!-- EDITOR -->
         <div class="editor flex">
           <input
@@ -165,21 +161,21 @@
             >
               <img src="images/options/decrease-font.png" alt="" />
             </a>
-            <a href="#" class="btn-option text-align-left">
+            <a href="#" class="btn-option" title="Align Left">
               <img
                 src="images/options/align-to-left.png"
                 alt=""
                 onclick="onSetTextAlign('start')"
               />
             </a>
-            <a href="#" class="btn-option text-align-center">
+            <a href="#" class="btn-option" title="Align Center">
               <img
                 src="images/options/center-text-alignment.png"
                 alt=""
                 onclick="onSetTextAlign('center')"
               />
             </a>
-            <a href="#" class="btn-option align-right-">
+            <a href="#" class="btn-option" title="Align Right">
               <img
                 src="images/options/align-to-right.png"
                 alt=""
