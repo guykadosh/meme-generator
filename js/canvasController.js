@@ -21,7 +21,6 @@ function drawText(line) {
 }
 
 function drawSelectedRect(line) {
-  console.log(line.width)
   const lineArea = getLineArea(line)
   gCtx.lineWidth = 1
   gCtx.strokeStyle = '#f8f9fa'
@@ -42,7 +41,12 @@ function onDown(ev) {
   const pos = getEvPos(ev)
   const lineIdx = getClickedLine(pos)
 
-  if (lineIdx === -1) return
+  if (lineIdx === -1) {
+    renderMeme(true)
+    const elInlineInput = document.querySelector('.edit-input')
+    if (elInlineInput) elInlineInput.remove()
+    return
+  }
 
   setSelectedLine(lineIdx)
 
@@ -77,6 +81,19 @@ function onUp() {
   document.body.style.cursor = 'grab'
 }
 
+function onDoubleClick(ev) {
+  const pos = getEvPos(ev)
+  const lineIdx = getClickedLine(pos)
+  const line = getSelectedLine()
+  console.log('i got called')
+
+  if (lineIdx === -1) {
+    renderMeme(true)
+    return
+  }
+
+  renderInlineInput(line)
+}
 function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container')
   gCanvas.width = elContainer.offsetWidth
@@ -103,4 +120,15 @@ function getEvPos(ev) {
     }
   }
   return pos
+}
+
+function renderInlineInput(line) {
+  const elContainer = document.querySelector('.canvas-input')
+
+  elContainer.style.top = line.pos.y - line.fontSize - 2 + 'px'
+  elContainer.style.left = line.pos.x - 3 + 'px'
+
+  const strHTML = `<input value="${line.txt}" oninput="onSetTextInline(this.value)" style="color: ${line.color}; font-size: ${line.fontSize}px; font-family: ${line.font};" class="edit-input" />`
+
+  elContainer.innerHTML = strHTML
 }

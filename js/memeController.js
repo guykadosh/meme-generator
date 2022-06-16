@@ -1,6 +1,6 @@
 'use strict'
 
-function renderMeme(isDownload = false) {
+function renderMeme(ignoreSelected = false) {
   const meme = getMeme()
   const imgDraw = new Image()
   const img = getImg(meme.selectedImgId)
@@ -12,7 +12,7 @@ function renderMeme(isDownload = false) {
   drawImg(imgDraw)
 
   meme.lines.forEach(line => drawText(line))
-  if (!isDownload) drawSelectedRect(meme.lines[meme.selectedLineIdx])
+  if (!ignoreSelected) drawSelectedRect(meme.lines[meme.selectedLineIdx])
   gCtx.save()
 }
 
@@ -31,6 +31,15 @@ function onSetTextLine(txt) {
   setLineWidth(gCtx.measureText(line.txt).width)
 
   renderMeme()
+}
+
+function onSetTextInline(txt) {
+  onSetTextLine(txt)
+
+  const line = getSelectedLine()
+
+  document.querySelector('.text-line').value = txt
+  document.querySelector('.edit-input').style.width = `${line.width + 5}px`
 }
 
 function onChangeFillColor(color) {

@@ -27,6 +27,7 @@ function addMouseListeners() {
   gCanvas.addEventListener('mousemove', onMove)
   gCanvas.addEventListener('mousedown', onDown)
   gCanvas.addEventListener('mouseup', onUp)
+  gCanvas.addEventListener('dblclick', onDoubleClick)
 }
 
 function addTouchListeners() {
