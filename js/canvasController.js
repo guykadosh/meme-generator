@@ -70,6 +70,7 @@ function onDown(ev) {
     console.log('Resizing...')
     document.body.style.cursor = 'nesw-resize'
     setLineResize(true)
+    renderMeme()
     return
   }
 
@@ -77,6 +78,7 @@ function onDown(ev) {
     console.log('Rotating...')
     document.body.style.cursor = 'alias'
     setLineRotate(true)
+    renderMeme()
     return
   }
 
@@ -149,7 +151,8 @@ function getEvPos(ev) {
     ev.preventDefault()
     ev = ev.changedTouches[0]
     pos = {
-      x: ev.pageX - ev.target.offsetLeft,
+      // x: ev.pageX - ev.target.offsetLeft,
+      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
       y: ev.pageY - ev.target.offsetParent.offsetTop,
     }
   }
