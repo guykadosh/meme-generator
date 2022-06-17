@@ -44,7 +44,6 @@ function doUploadImg(imgDataUrl, onSuccess) {
 }
 
 function downloadImg(elLink) {
-  console.log('i got called')
   var imgContent = gCanvas.toDataURL('image/jpeg') // image/jpeg the default format
   elLink.href = imgContent
 }

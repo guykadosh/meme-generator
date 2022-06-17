@@ -11,11 +11,10 @@
 
 .canvas-container .canvas-input {
   position: absolute;
-  /* height: fit-content; */
+  height: fit-content;
 }
 
 .canvas-container .canvas-input input {
   background-color: rgba(255, 255, 255, 0.199);
-  /* outline: none; */
   resize: none;
 }

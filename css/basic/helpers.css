@@ -31,3 +31,7 @@
 .grid {
   display: grid;
 }
+
+.relative {
+  position: relative;
+}

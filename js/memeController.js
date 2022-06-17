@@ -5,14 +5,14 @@ function renderMeme(ignoreSelected = false) {
   const imgDraw = new Image()
   const img = getImg(meme.selectedImgId)
   imgDraw.src = img.url
+  // gCtx.restore()
 
   gCanvas.height = (gCanvas.width * imgDraw.height) / imgDraw.width
 
-  // gCtx.restore()
   drawImg(imgDraw)
-
   meme.lines.forEach(line => drawText(line))
   if (!ignoreSelected) drawSelectedRect(meme.lines[meme.selectedLineIdx])
+
   // gCtx.save()
 }
 
@@ -118,7 +118,6 @@ function generateRandomMeme() {
 
   const num = getRandomIntInc(0, 2)
 
-  console.log(num)
   // if num = 2 add another sentence
   if (num === 2) {
     addLine(getRandomSentence())

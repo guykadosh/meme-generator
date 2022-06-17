@@ -40,8 +40,6 @@ function renderSavedMemes() {
 function renderKeywords() {
   const keywords = getKeywordsMap()
 
-  console.log(keywords)
-
   let strHTMLs = ''
   for (const key in keywords) {
     strHTMLs += `<p class="keyword" onclick="onKeywordClick('${key}')" style="font-size: ${keywords[key]}px; cursor: pointer;">${key}</p>`
@@ -55,7 +53,6 @@ function renderDatalistKeywords() {
 
   const strHTMLS = keywords.map(keyword => `<option value="${keyword}" />`)
 
-  console.log(strHTMLS.join(''))
   document.querySelector('#keywords-list').innerHTML = strHTMLS.join('')
 }
 

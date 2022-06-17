@@ -15,10 +15,10 @@ function drawText(line) {
   gCtx.fillStyle = line.color
   gCtx.strokeStyle = line.stroke
   gCtx.font = `${line.weight} ${line.fontSize}px ${line.font}`
-  gCtx.save()
   gCtx.rotate(line.degree)
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)
+  // gCtx.save()
 }
 
 function drawSelectedRect(line) {
@@ -51,6 +51,7 @@ function drawSelectedRect(line) {
 function onDown(ev) {
   //Get the ev pos from mouse or touch
   const pos = getEvPos(ev)
+
   const lineIdx = getClickedLine(pos)
 
   if (lineIdx === -1) {
@@ -134,26 +135,22 @@ function onDoubleClick(ev) {
 function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container')
   gCanvas.width = elContainer.offsetWidth
-  gCanvas.height = elContainer.offsetHeight
+  // gCanvas.height = elContainer.offsetHeight
   renderMeme()
 }
 
 function getEvPos(ev) {
-  //Gets the offset pos , the default pos
   var pos = {
     x: ev.offsetX,
     y: ev.offsetY,
   }
-  // Check if its a touch ev
+
   if (gTouchEvs.includes(ev.type)) {
-    //soo we will not trigger the mouse ev
     ev.preventDefault()
-    //Gets the first touch point
     ev = ev.changedTouches[0]
-    //Calc the right pos according to the touch screen
     pos = {
-      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+      x: ev.pageX - ev.target.offsetLeft,
+      y: ev.pageY - ev.target.offsetParent.offsetTop,
     }
   }
   return pos

@@ -38,11 +38,9 @@ function getImgs() {
   let imgs = gImgs
 
   if (gFilterBy.txt) {
-    console.log('i got in')
     imgs = imgs.filter(img =>
       img.keywords.some(key => key.includes(gFilterBy.txt))
     )
-    console.log(imgs)
   }
 
   return imgs
@@ -54,7 +52,6 @@ function getImg(imgId) {
 
 function setFilterByTxt(txt) {
   gFilterBy.txt = txt
-  console.log(gFilterBy)
 }
 
 function setUploadedImg(img) {
