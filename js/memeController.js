@@ -8,12 +8,12 @@ function renderMeme(ignoreSelected = false) {
 
   gCanvas.height = (gCanvas.width * imgDraw.height) / imgDraw.width
 
-  gCtx.restore()
+  // gCtx.restore()
   drawImg(imgDraw)
 
   meme.lines.forEach(line => drawText(line))
   if (!ignoreSelected) drawSelectedRect(meme.lines[meme.selectedLineIdx])
-  gCtx.save()
+  // gCtx.save()
 }
 
 function renderEmojis() {

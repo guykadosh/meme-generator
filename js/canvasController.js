@@ -15,8 +15,9 @@ function drawText(line) {
   gCtx.fillStyle = line.color
   gCtx.strokeStyle = line.stroke
   gCtx.font = `${line.weight} ${line.fontSize}px ${line.font}`
+  gCtx.save()
+  gCtx.rotate(line.degree)
   gCtx.fillText(text, x, y)
-
   gCtx.strokeText(text, x, y)
 }
 
@@ -33,6 +34,17 @@ function drawSelectedRect(line) {
   )
 
   gCtx.stroke()
+
+  // Add Resize Corner
+  gCtx.fillRect(
+    lineArea.x + lineArea.width - 4,
+    lineArea.y - lineArea.height + 2,
+    8,
+    8
+  )
+
+  gCtx.arc(lineArea.x + lineArea.width, lineArea.y + 3, 5, 0, Math.PI * 2)
+  gCtx.fill()
 }
 
 // Events on Canvas
@@ -50,25 +62,48 @@ function onDown(ev) {
 
   setSelectedLine(lineIdx)
 
+  //Save the pos we start from
+  gStartPos = pos
+
+  if (checkOnResize(pos)) {
+    console.log('Resizing...')
+    document.body.style.cursor = 'nesw-resize'
+    setLineResize(true)
+    return
+  }
+
+  if (checkOnRotate(pos)) {
+    console.log('Rotating...')
+    document.body.style.cursor = 'alias'
+    setLineRotate(true)
+    return
+  }
+
   const line = getLineByIdx(lineIdx)
   updateInputVal(line)
 
   renderMeme()
   setLineDrag(true)
-  //Save the pos we start from
-  gStartPos = pos
+
   document.body.style.cursor = 'grabbing'
 }
 
 function onMove(ev) {
   const line = getSelectedLine()
-  if (!line.isDrag) return
+
+  if (!line.isDrag && !line.isResize && !line.isRotate) return
 
   const pos = getEvPos(ev)
   //Calc the delta , the diff we moved
   const dx = pos.x - gStartPos.x
   const dy = pos.y - gStartPos.y
-  dragLine(dx, dy)
+
+  if (line.isResize) resizeLine(dx)
+  if (line.isDrag) dragLine(dx, dy)
+  if (line.isRotate) rotateLine(dy)
+
+  setLineWidth(calcualteTextWidth(line))
+
   //Save the last pos , we remember where we`ve been and move accordingly
   gStartPos = pos
 
@@ -78,6 +113,8 @@ function onMove(ev) {
 
 function onUp() {
   setLineDrag(false)
+  setLineResize(false)
+  setLineRotate(false)
   document.body.style.cursor = 'grab'
 }
 
@@ -85,7 +122,6 @@ function onDoubleClick(ev) {
   const pos = getEvPos(ev)
   const lineIdx = getClickedLine(pos)
   const line = getSelectedLine()
-  console.log('i got called')
 
   if (lineIdx === -1) {
     renderMeme(true)
@@ -94,6 +130,7 @@ function onDoubleClick(ev) {
 
   renderInlineInput(line)
 }
+
 function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container')
   gCanvas.width = elContainer.offsetWidth

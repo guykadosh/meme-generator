@@ -26,6 +26,7 @@
 
 .logo-header {
   height: 4.375rem;
+  cursor: pointer;
 }
 
 .header .main-nav a {

@@ -174,14 +174,45 @@ function getClickedLine({ x, y }) {
     const lineArea = getLineArea(line)
 
     return (
-      x >= lineArea.x &&
-      x <= lineArea.x + lineArea.width &&
-      y <= lineArea.y &&
-      y >= lineArea.y - lineArea.height
+      x >= lineArea.x - 5 &&
+      x <= lineArea.x + lineArea.width + 5 &&
+      y <= lineArea.y + 5 &&
+      y >= lineArea.y - lineArea.height - 5
     )
   })
 
   return lineIdx
+}
+
+function checkOnResize(pos) {
+  const line = getSelectedLine()
+
+  const corner = { x: line.pos.x + line.width + 5, y: line.pos.y - 25 }
+  const distance = calcAbsDistace(pos, corner)
+
+  return distance < 10
+}
+
+function checkOnRotate(pos) {
+  const line = getSelectedLine()
+
+  const corner = {
+    x: line.pos.x + line.width + 3,
+    y: line.pos.y + line.fontSize - 20,
+  }
+
+  const distance = calcAbsDistace(pos, corner)
+  return distance < 10
+}
+
+function setLineResize(isResize) {
+  const line = getSelectedLine()
+  line.isResize = isResize
+}
+
+function setLineRotate(isRotate) {
+  const line = getSelectedLine()
+  line.isRotate = isRotate
 }
 
 function setLineWidth(width, line = gMeme.lines[gMeme.selectedLineIdx]) {
@@ -224,10 +255,35 @@ function dragLine(dx, dy) {
   line.pos.y += dy
 }
 
+function resizeLine(diff) {
+  const line = getSelectedLine()
+
+  // Dont let user go to awful sizes
+  if ((line.fontSize < 15 && diff < 0) || (line.fontSize > 50 && diff > 0)) {
+    return
+  }
+
+  line.fontSize += diff
+}
+
+// TODO: Fix this ;(
+function rotateLine(diff) {
+  const line = getSelectedLine()
+
+  // line.degree += diff
+  line.degree += Math.atan(diff / line.width)
+  line.pos.y += diff + line.degree
+
+  // console.log(diff, line.width)
+  // console.log(diff / line.width)
+  // console.log(Math.tan(diff / line.width) * (180 / Math.PI))
+  // console.log(line.pos.y)
+  // console.log(line.degree)
+}
+
 function saveMeme() {
   gMeme.dataImg = gCanvas.toDataURL('image/jpeg')
   gMemes.push(JSON.parse(JSON.stringify(gMeme)))
-  // console.log(gCanvas.toDataURL('image/jpeg'))
 
   _saveMemesToStorage()
 }
@@ -239,7 +295,6 @@ function getPlaceholder() {
 function _createLine(txt, y = 100) {
   return {
     txt,
-    size: 20,
     align: 'start',
     color: '#fff',
     stroke: 'black',
@@ -249,6 +304,9 @@ function _createLine(txt, y = 100) {
     fontSize: 30,
     pos: { x: 10, y },
     isDrag: false,
+    isResize: false,
+    isRotate: false,
+    degree: 0,
   }
 }
 
