@@ -17,4 +17,5 @@
 .canvas-container .canvas-input input {
   background-color: rgba(255, 255, 255, 0.199);
   resize: none;
+  outline: none;
 }
