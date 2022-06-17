@@ -1,5 +1,6 @@
 'use strict'
 
+// Rendering functions
 function renderGallery() {
   const imgs = getImgs()
   let strHTMLs = `<article class="gallery-img">
@@ -56,16 +57,36 @@ function renderDatalistKeywords() {
   document.querySelector('#keywords-list').innerHTML = strHTMLS.join('')
 }
 
-function onMemeSelect(memeIdx) {
-  setMeme(memeIdx)
+// Handle Events on gallery
 
-  document.querySelector('.memes').style.display = 'none'
-  document.querySelector('.editor-container').style.display = 'flex'
-
-  renderMeme()
-  resizeCanvas()
+// Intial load gallery from loading page(hiding hero)
+function onLoadGallery() {
+  document.querySelector('.hero').classList.add('hero-hidden')
+  document.querySelector('.header').style.opacity = '1'
+  document.querySelector('.gallery').style.display = 'flex'
+  document.querySelector('.footer').style.display = 'flex'
 }
 
+// Shows gallery after page loaded
+function onShowGallery() {
+  document.querySelector('.gallery').style.display = 'flex'
+  document.querySelector('.editor-container').style.display = 'none'
+  document.querySelector('.memes').style.display = 'none'
+
+  renderGallery()
+  initGMeme()
+}
+
+// Shows saved meme gallery
+function onShowSavedMemes() {
+  document.querySelector('.gallery').style.display = 'none'
+  document.querySelector('.editor-container').style.display = 'none'
+  document.querySelector('.memes').style.display = 'block'
+
+  renderSavedMemes()
+}
+
+// On select img from gallery
 function onImgSelect(imgId) {
   setImg(imgId)
 
@@ -76,28 +97,15 @@ function onImgSelect(imgId) {
   resizeCanvas()
 }
 
-function onLoadGallery() {
-  document.querySelector('.hero').classList.add('hero-hidden')
-  document.querySelector('.header').style.opacity = '1'
-  document.querySelector('.gallery').style.display = 'flex'
-  document.querySelector('.footer').style.display = 'flex'
-}
+// On select meme from saved memes
+function onMemeSelect(memeIdx) {
+  setMeme(memeIdx)
 
-function onShowGallery() {
-  document.querySelector('.gallery').style.display = 'flex'
-  document.querySelector('.editor-container').style.display = 'none'
   document.querySelector('.memes').style.display = 'none'
+  document.querySelector('.editor-container').style.display = 'flex'
 
-  renderGallery()
-  initGMeme()
-}
-
-function onShowSavedMemes() {
-  document.querySelector('.gallery').style.display = 'none'
-  document.querySelector('.editor-container').style.display = 'none'
-  document.querySelector('.memes').style.display = 'block'
-
-  renderSavedMemes()
+  renderMeme()
+  resizeCanvas()
 }
 
 function onGenerateRandomMeme() {
@@ -110,12 +118,22 @@ function onGenerateRandomMeme() {
   renderMeme()
 }
 
+// Handles search events
 function onSetFilterText(txt) {
   setFilterByTxt(txt)
 
   renderGallery()
 }
 
+function onKeywordClick(key) {
+  increaseClickCount(key)
+
+  document.querySelector('.filter-txt-input').value = key
+  onSetFilterText(key)
+  renderKeywords()
+}
+
+// Handle user uploading img
 function onImgInput(ev) {
   loadImageFromInput(ev, onUploadImg)
 }
@@ -140,12 +158,4 @@ function onUploadImg(img) {
   document.querySelector('.editor-container').style.display = 'flex'
 
   resizeCanvas()
-}
-
-function onKeywordClick(key) {
-  increaseClickCount(key)
-
-  document.querySelector('.filter-txt-input').value = key
-  onSetFilterText(key)
-  renderKeywords()
 }

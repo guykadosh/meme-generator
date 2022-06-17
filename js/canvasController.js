@@ -3,7 +3,7 @@
 let gStartPos
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
-// Drawing
+// Handle Drawings
 function drawImg(img) {
   gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
 }
@@ -21,6 +21,7 @@ function drawText(line) {
   // gCtx.save()
 }
 
+// Draws rect around selected line
 function drawSelectedRect(line) {
   const lineArea = getLineArea(line)
   gCtx.lineWidth = 1
@@ -47,7 +48,7 @@ function drawSelectedRect(line) {
   gCtx.fill()
 }
 
-// Events on Canvas
+// Events on Canvas (Mouse & Touch)
 function onDown(ev) {
   //Get the ev pos from mouse or touch
   const pos = getEvPos(ev)
@@ -101,6 +102,7 @@ function onMove(ev) {
   const dx = pos.x - gStartPos.x
   const dy = pos.y - gStartPos.y
 
+  // Handle wanted editing accordinly
   if (line.isResize) resizeLine(dx)
   if (line.isDrag) dragLine(dx, dy)
   if (line.isRotate) rotateLine(dy)
@@ -134,6 +136,7 @@ function onDoubleClick(ev) {
   renderInlineInput(line)
 }
 
+// Canvas Utils
 function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container')
   gCanvas.width = elContainer.offsetWidth

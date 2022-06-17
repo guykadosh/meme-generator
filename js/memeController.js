@@ -25,6 +25,41 @@ function renderEmojis() {
   document.querySelector('.emoji-selector').innerHTML = strHTMLs.join('')
 }
 
+// Handle Events From Editor
+
+// Adding new line
+function onAddLine(txt = '') {
+  // Add to model with requested line or default one
+  const line = txt ? addLine(txt) : addLine()
+
+  // Set input placeholder
+  document
+    .querySelector('.text-line')
+    .setAttribute('placeholder', getPlaceholder())
+
+  // Calculate line width
+  setLineWidth(calcualteTextWidth(line))
+
+  renderMeme()
+}
+
+// Removing Line
+function onRemoveLine() {
+  removeLine()
+
+  renderMeme()
+}
+
+// Toggle between selected lines
+function onSwitchTextLine() {
+  const line = switchSelectedLine()
+
+  updateInputVal(line)
+
+  renderMeme()
+}
+
+// Changes text from input
 function onSetTextLine(txt) {
   const line = setTextLine(txt)
 
@@ -33,6 +68,7 @@ function onSetTextLine(txt) {
   renderMeme()
 }
 
+// Changes text from input on canvas
 function onSetTextInline(txt) {
   onSetTextLine(txt)
 
@@ -42,6 +78,7 @@ function onSetTextInline(txt) {
   document.querySelector('.edit-input').style.width = `${line.width + 5}px`
 }
 
+// Next 2 Functions handle chaging colors fill and stroke
 function onChangeFillColor(color) {
   setFillColor(color)
 
@@ -54,46 +91,11 @@ function onChangeStrokeColor(color) {
   renderMeme()
 }
 
+// Handling Fonts Size and family change
 function onChangeFontSize(diff) {
   const line = changeFontSize(diff)
 
   setLineWidth(calcualteTextWidth(line))
-
-  renderMeme()
-}
-
-function onSwitchTextLine() {
-  const line = switchSelectedLine()
-
-  updateInputVal(line)
-
-  renderMeme()
-}
-
-function onMoveLine(diff) {
-  moveLine(diff)
-
-  renderMeme()
-}
-
-function onAddLine(txt = '') {
-  const line = txt ? addLine(txt) : addLine()
-  document
-    .querySelector('.text-line')
-    .setAttribute('placeholder', getPlaceholder())
-
-  setLineWidth(calcualteTextWidth(line))
-  renderMeme()
-}
-
-function onRemoveLine() {
-  removeLine()
-
-  renderMeme()
-}
-
-function onSetTextAlign(align) {
-  setTextAlign(align)
 
   renderMeme()
 }
@@ -104,10 +106,23 @@ function onSetFontFamily(fontFamily) {
   renderMeme()
 }
 
+function onSetTextAlign(align) {
+  setTextAlign(align)
+
+  renderMeme()
+}
+
+function onMoveLine(diff) {
+  moveLine(diff)
+
+  renderMeme()
+}
+
 function onSaveMeme() {
   saveMeme()
 }
 
+// Handle Generating Random meme with random img and lines
 function generateRandomMeme() {
   const imgs = getImgs()
   const imgId = imgs[getRandomIntInc(0, imgs.length - 1)].id
@@ -134,13 +149,14 @@ function generateRandomLine(lineIdx) {
   const line = getLineByIdx(lineIdx)
   setLineWidth(calcualteTextWidth(line), line)
 
-  // Resize until fits the canvas
+  // Resize fontsize until fits the canvas
   while (line.width > gCanvas.width) {
     line.fontSize -= 2
     setLineWidth(calcualteTextWidth(line), line)
   }
 }
 
+// Calculate Text Width
 function calcualteTextWidth(line) {
   gCtx.font = `${line.fontSize}px ${line.font}`
   const metrics = gCtx.measureText(line.txt)
@@ -151,6 +167,7 @@ function calcualteTextWidth(line) {
   return width
 }
 
+// Update input value with given line's text
 function updateInputVal(line) {
   const elInput = document.querySelector('.text-line')
 

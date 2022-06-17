@@ -3,43 +3,6 @@
 const gPlaceholder = 'Write Something Here...'
 const KEY = 'memesDB'
 
-const gEmojis = [
-  '😎',
-  '😁',
-  '😍',
-  '🤣',
-  '😪',
-  '💩',
-  '🤬',
-  '🙈',
-  '🙉',
-  '🙊',
-  '🤐',
-  '😫',
-  '😜',
-  '😞',
-  '😝',
-  '😕',
-  '😖',
-  '😗',
-  '😢',
-  '🥱',
-  '👻',
-  '🥳',
-  '🤯',
-  '🐸',
-  '🤖',
-  '🥶',
-  '👽',
-  '👴',
-  '👵',
-  '👾',
-  '👇',
-  '👏',
-  '👧',
-  '👸',
-]
-
 let gMemes
 let gMeme
 
@@ -53,6 +16,7 @@ function initGMeme() {
   }
 }
 
+// Getters
 function getMemes() {
   return gMemes
 }
@@ -61,12 +25,8 @@ function getMeme() {
   return gMeme
 }
 
-function getEmojis() {
-  return gEmojis
-}
-
-function setMeme(memeIdx) {
-  gMeme = gMemes[memeIdx]
+function getPlaceholder() {
+  return gPlaceholder
 }
 
 function getSelectedLine() {
@@ -75,85 +35,6 @@ function getSelectedLine() {
 
 function getLineByIdx(lineIdx) {
   return gMeme.lines[lineIdx]
-}
-
-function setTextLine(txt, lineIdx = gMeme.selectedLineIdx) {
-  gMeme.lines[lineIdx].txt = txt
-
-  return gMeme.lines[lineIdx]
-}
-
-function setImg(imgId) {
-  gMeme.selectedImgId = imgId
-}
-
-function setFillColor(color, lineIdx = gMeme.selectedLineIdx) {
-  gMeme.lines[lineIdx].color = color
-}
-
-function setStrokeColor(color, lineIdx = gMeme.selectedLineIdx) {
-  gMeme.lines[lineIdx].stroke = color
-}
-
-function setFontSize(size, lineIdx = gMeme.selectedLineIdx) {
-  gMeme.lines[lineIdx].fontSize = size
-}
-
-function changeFontSize(diff, lineIdx = gMeme.selectedLineIdx) {
-  gMeme.lines[lineIdx].fontSize += diff
-
-  return gMeme.lines[lineIdx]
-}
-
-function switchSelectedLine() {
-  gMeme.selectedLineIdx++
-  if (gMeme.selectedLineIdx >= gMeme.lines.length) {
-    gMeme.selectedLineIdx = 0
-  }
-
-  return gMeme.lines[gMeme.selectedLineIdx]
-}
-
-function setSelectedLine(lineIdx) {
-  gMeme.selectedLineIdx = lineIdx
-
-  return gMeme.lines[gMeme.selectedLineIdx]
-}
-
-function moveLine(diff) {
-  const currY = gMeme.lines[gMeme.selectedLineIdx].pos.y
-  const fontSize = gMeme.lines[gMeme.selectedLineIdx].fontSize
-  if (
-    (diff < 0 && currY <= fontSize + 5) ||
-    (diff > 0 && currY >= gCanvas.height - fontSize / 2)
-  ) {
-    return
-  }
-
-  gMeme.lines[gMeme.selectedLineIdx].pos.y += diff
-
-  return gMeme.lines[gMeme.selectedLineIdx]
-}
-
-function addLine(txt = gPlaceholder) {
-  let y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50
-  if (y >= gCanvas.height - gMeme.lines[gMeme.selectedLineIdx].fontSize) y = 50
-
-  const line = _createLine(txt, y)
-
-  gMeme.lines.push(line)
-  gMeme.selectedLineIdx = gMeme.lines.length - 1
-
-  return line
-}
-
-function removeLine() {
-  if (gMeme.lines.length === 1) return true
-
-  gMeme.lines.splice(gMeme.selectedLineIdx, 1)
-  gMeme.selectedLineIdx = gMeme.lines.length - 1
-
-  return false
 }
 
 function getLineWidth() {
@@ -184,40 +65,44 @@ function getClickedLine({ x, y }) {
   return lineIdx
 }
 
-function checkOnResize(pos) {
-  const line = getSelectedLine()
-
-  const corner = { x: line.pos.x + line.width + 5, y: line.pos.y - 25 }
-  const distance = calcAbsDistace(pos, corner)
-
-  return distance < 10
+// Setters
+function setMeme(memeIdx) {
+  gMeme = gMemes[memeIdx]
 }
 
-function checkOnRotate(pos) {
-  const line = getSelectedLine()
+function setTextLine(txt, lineIdx = gMeme.selectedLineIdx) {
+  gMeme.lines[lineIdx].txt = txt
 
-  const corner = {
-    x: line.pos.x + line.width + 3,
-    y: line.pos.y + line.fontSize - 20,
-  }
-
-  const distance = calcAbsDistace(pos, corner)
-  return distance < 10
+  return gMeme.lines[lineIdx]
 }
 
-function setLineResize(isResize) {
-  const line = getSelectedLine()
-  line.isResize = isResize
+function setImg(imgId) {
+  gMeme.selectedImgId = imgId
 }
 
-function setLineRotate(isRotate) {
-  const line = getSelectedLine()
-  line.isRotate = isRotate
+function setSelectedLine(lineIdx) {
+  gMeme.selectedLineIdx = lineIdx
+
+  return gMeme.lines[gMeme.selectedLineIdx]
 }
 
 function setLineWidth(width, line = gMeme.lines[gMeme.selectedLineIdx]) {
   line.width = width
   return width
+}
+
+// Colors
+function setFillColor(color, lineIdx = gMeme.selectedLineIdx) {
+  gMeme.lines[lineIdx].color = color
+}
+
+function setStrokeColor(color, lineIdx = gMeme.selectedLineIdx) {
+  gMeme.lines[lineIdx].stroke = color
+}
+
+// Fonts
+function setFontSize(size, lineIdx = gMeme.selectedLineIdx) {
+  gMeme.lines[lineIdx].fontSize = size
 }
 
 function setTextAlign(align) {
@@ -244,10 +129,95 @@ function setFontFamily(fontFamily) {
   gMeme.lines[gMeme.selectedLineIdx].font = fontFamily
 }
 
+// Line state setters
 function setLineDrag(isDrag) {
   gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
 }
 
+function setLineResize(isResize) {
+  const line = getSelectedLine()
+  line.isResize = isResize
+}
+
+function setLineRotate(isRotate) {
+  const line = getSelectedLine()
+  line.isRotate = isRotate
+}
+
+// Additional Manipulation Functions
+function addLine(txt = gPlaceholder) {
+  let y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50
+  if (y >= gCanvas.height - gMeme.lines[gMeme.selectedLineIdx].fontSize) y = 50
+
+  const line = _createLine(txt, y)
+
+  gMeme.lines.push(line)
+  gMeme.selectedLineIdx = gMeme.lines.length - 1
+
+  return line
+}
+
+function removeLine() {
+  if (gMeme.lines.length === 1) return true
+
+  gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+  gMeme.selectedLineIdx = gMeme.lines.length - 1
+
+  return false
+}
+
+function switchSelectedLine() {
+  gMeme.selectedLineIdx++
+  if (gMeme.selectedLineIdx >= gMeme.lines.length) {
+    gMeme.selectedLineIdx = 0
+  }
+
+  return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function changeFontSize(diff, lineIdx = gMeme.selectedLineIdx) {
+  gMeme.lines[lineIdx].fontSize += diff
+
+  return gMeme.lines[lineIdx]
+}
+
+function moveLine(diff) {
+  const currY = gMeme.lines[gMeme.selectedLineIdx].pos.y
+  const fontSize = gMeme.lines[gMeme.selectedLineIdx].fontSize
+  if (
+    (diff < 0 && currY <= fontSize + 5) ||
+    (diff > 0 && currY >= gCanvas.height - fontSize / 2)
+  ) {
+    return
+  }
+
+  gMeme.lines[gMeme.selectedLineIdx].pos.y += diff
+
+  return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function checkOnResize(pos) {
+  const line = getSelectedLine()
+
+  const corner = { x: line.pos.x + line.width + 5, y: line.pos.y - 25 }
+  const distance = calcAbsDistace(pos, corner)
+
+  return distance < 10
+}
+
+function checkOnRotate(pos) {
+  const line = getSelectedLine()
+
+  const corner = {
+    x: line.pos.x + line.width + 3,
+    y: line.pos.y + line.fontSize - 20,
+  }
+
+  const distance = calcAbsDistace(pos, corner)
+  return distance < 10
+}
+
+// Handle state changes
 function dragLine(dx, dy) {
   const line = getSelectedLine()
 
@@ -288,10 +258,7 @@ function saveMeme() {
   _saveMemesToStorage()
 }
 
-function getPlaceholder() {
-  return gPlaceholder
-}
-
+// Private functions
 function _createLine(txt, y = 100) {
   return {
     txt,
