@@ -1,2 +1,2 @@
 # Meme-generator
-Sprint 2 - Coding Acdemy - May 2022 
+Sprint 2 - Coding Academy - May 2022 
