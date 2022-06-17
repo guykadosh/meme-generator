@@ -11,10 +11,14 @@ function drawImg(img) {
 function drawText(line) {
   const text = line.txt
   const { x, y } = line.pos
-  gCtx.lineWidth = 0.2
+
+  // Style
+  gCtx.lineWidth = 1
   gCtx.fillStyle = line.color
   gCtx.strokeStyle = line.stroke
   gCtx.font = `${line.weight} ${line.fontSize}px ${line.font}`
+
+  // Draw
   gCtx.rotate(line.degree)
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)

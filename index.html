@@ -112,9 +112,14 @@
       <!-- MEME EDITOR SECTION -->
       <section class="editor-container main-layout flex justify-center">
         <!-- CANVAS -->
-        <div class="canvas-container">
-          <canvas class="canvas" height="500" width="500"></canvas>
-          <div class="canvas-input"></div>
+        <div>
+          <p class="tip">
+            TIP: ■ to resize ● to rotate, use rotate last! it might break 🙈
+          </p>
+          <div class="canvas-container">
+            <canvas class="canvas" height="500" width="500"></canvas>
+            <div class="canvas-input"></div>
+          </div>
         </div>
 
         <!-- EDITOR -->
@@ -263,8 +268,10 @@
             </span>
           </div>
 
-          <div class="editor-text-tools"></div>
+          <!-- EMOJIS WILL RENDER HERE -->
           <div class="emoji-selector"></div>
+
+          <!-- SHARE/DOWNLOAD/UPLOAD/SAVE BTNS -->
           <div class="share-btns">
             <button class="btn-download btn-share">
               <a href="#" onclick="downloadImg(this)" download="my-img.jpg">
