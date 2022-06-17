@@ -1,28 +1,28 @@
 .editor-container {
-  /* padding-top: 3.75rem; */
   display: none;
-  /* width: 100%; */
-
   flex-direction: column;
   align-items: center;
 }
 
 .editor {
   flex-direction: column;
-  padding: 1.2rem;
-  border: 1px solid #99e9f2;
+
   width: 250px;
+  padding: 1.2rem;
+
+  border: 1px solid #99e9f2;
   background-color: #22b8cf;
   border-radius: 12px;
 }
 
-.editor input {
+.editor .input {
   margin-bottom: 1.25rem;
 }
 
-.editor-options {
+.editor-tools {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.65rem;
   margin-bottom: 1.25rem;
-  justify-content: space-between;
 }
 
 .editor .input {
@@ -30,24 +30,8 @@
   padding-left: 0.5rem;
 }
 
-.editor-text-options {
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.65rem;
-  margin-bottom: 1.25rem;
-}
-
 .font-select {
   grid-column: span 3;
-}
-
-select {
-  background-color: #1098ad;
-  background-position: right 10px center;
-  background-size: auto 50%;
-  border-radius: 2px;
-  border: none;
-  color: #ffffff;
-  padding: 10px 30px 10px 10px;
 }
 
 .emoji-selector {
@@ -69,24 +53,4 @@ select {
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
   margin-block-end: 1rem;
-}
-
-input[type='color'] {
-  -webkit-appearance: none;
-
-  border-radius: 9px;
-  width: 3.125rem;
-  height: 3.125rem;
-  cursor: pointer;
-  margin: 0;
-}
-
-input[type='color']::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-
-input[type='color']::-webkit-color-swatch {
-  border: none;
-  border: 4px solid #fff;
-  border-radius: 0.56rem;
 }

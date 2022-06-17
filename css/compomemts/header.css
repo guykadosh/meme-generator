@@ -24,7 +24,7 @@
   transition: opacity 1s;
 }
 
-.logo-header {
+.header .logo-header {
   height: 4.375rem;
   cursor: pointer;
 }

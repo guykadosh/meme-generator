@@ -18,13 +18,13 @@ const gImgs = [
   { id: 15, url: 'images/memes/15.jpg', keywords: ['tv', 'cool'] },
   { id: 16, url: 'images/memes/16.jpg', keywords: ['tv', 'funny'] },
   { id: 17, url: 'images/memes/17.jpg', keywords: ['politics', 'evil'] },
-  { id: 18, url: 'images/memes/18.jpg', keywords: ['tv', 'toy'] },
-  { id: 19, url: 'images/memes/19.jpg', keywords: ['tv', 'toy'] },
-  { id: 20, url: 'images/memes/20.jpg', keywords: ['tv', 'toy'] },
-  { id: 21, url: 'images/memes/21.jpg', keywords: ['tv', 'toy'] },
-  { id: 22, url: 'images/memes/22.jpg', keywords: ['tv', 'toy'] },
-  { id: 23, url: 'images/memes/23.jpg', keywords: ['tv', 'toy'] },
-  { id: 24, url: 'images/memes/24.jpg', keywords: ['tv', 'toy'] },
+  { id: 18, url: 'images/memes/18.jpg', keywords: ['funny', 'popular'] },
+  { id: 19, url: 'images/memes/19.jpg', keywords: ['funny', 'popular'] },
+  { id: 20, url: 'images/memes/20.jpg', keywords: ['funny', 'popular'] },
+  { id: 21, url: 'images/memes/21.jpg', keywords: ['funny', 'tv'] },
+  { id: 22, url: 'images/memes/22.jpg', keywords: ['funny', 'popular'] },
+  { id: 23, url: 'images/memes/23.jpg', keywords: ['funny', 'popular'] },
+  { id: 24, url: 'images/memes/24.jpg', keywords: ['funny', 'kids'] },
 ]
 
 let gId = 25
@@ -58,7 +58,7 @@ function setUploadedImg(img) {
   const imgItem = {
     id: gId++,
     url: img.src,
-    keywords: ['tv', 'toy'],
+    keywords: ['popular', 'funny'],
   }
 
   gImgs.push(imgItem)

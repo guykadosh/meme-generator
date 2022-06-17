@@ -62,22 +62,3 @@
   text-align: center;
   font-size: 7rem;
 }
-
-.search {
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-inline-end: 1.5rem;
-}
-
-.pop-keywords {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  padding: 0.5rem;
-  gap: 0.5rem;
-  width: 100%;
-  justify-items: center;
-  align-items: center;
-  margin-bottom: 2rem;
-  background-color: #e3fafc;
-}

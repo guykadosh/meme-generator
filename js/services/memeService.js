@@ -272,11 +272,11 @@ function rotateLine(diff) {
 
   // line.degree += diff
   line.degree += Math.atan(diff / line.width)
-  line.pos.y += diff + line.degree
+  line.pos.y += diff
 
   // console.log(diff, line.width)
   // console.log(diff / line.width)
-  // console.log(Math.tan(diff / line.width) * (180 / Math.PI))
+  console.log(Math.atan(diff / line.width) * (Math.PI / 180))
   // console.log(line.pos.y)
   // console.log(line.degree)
 }

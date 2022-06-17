@@ -1,9 +1,9 @@
 /* BASE */
 @import 'basic/base.css';
 @import 'basic/helpers.css';
+@import 'basic/layout.css';
 @import 'basic/animations.css';
 @import 'basic/buttons.css';
-@import 'basic/layout.css';
 
 /* COMPONENTS */
 @import 'compomemts/header.css';
@@ -13,6 +13,7 @@
 @import 'compomemts/canvas.css';
 @import 'compomemts/screen.css';
 @import 'compomemts/footer.css';
+@import 'compomemts/search.css';
 
 /* MEDIA */
 @import 'mq/mq.css';

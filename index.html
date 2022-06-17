@@ -92,10 +92,7 @@
               oninput="onSetFilterText(this.value)"
             />
           </div>
-          <button
-            class="btn-option btn-random"
-            onclick="onGenerateRandomMeme()"
-          >
+          <button class="btn-tool btn-random" onclick="onGenerateRandomMeme()">
             <span class="tooltip">Random Meme</span>
             <span> <i class="fa-solid fa-shuffle"></i> </span>
           </button>
@@ -128,10 +125,10 @@
             oninput="onSetTextLine(this.value)"
           />
 
-          <div class="editor-options flex align-center">
+          <div class="editor-tools grid">
             <a
               href="#"
-              class="btn-option text-switch"
+              class="btn-tool text-switch"
               onclick="onSwitchTextLine()"
               title="switch text line"
             >
@@ -143,7 +140,7 @@
 
             <a
               href="#"
-              class="btn-option text-switch"
+              class="btn-tool text-switch"
               onclick="onMoveLine(-15)"
               title="Move Up"
             >
@@ -155,7 +152,7 @@
 
             <a
               href="#"
-              class="btn-option text-switch"
+              class="btn-tool text-switch"
               onclick="onMoveLine(15)"
               title="Move Down"
             >
@@ -166,7 +163,7 @@
             </a>
             <a
               href="#"
-              class="btn-option text-add"
+              class="btn-tool text-add"
               onclick="onAddLine()"
               title="Add Line"
             >
@@ -177,7 +174,7 @@
             </a>
             <a
               href="#"
-              class="btn-option text-delete"
+              class="btn-tool text-delete"
               onclick="onRemoveLine()"
               title="Remove Line"
             >
@@ -186,12 +183,9 @@
                 <i class="fa-solid fa-trash-can"></i>
               </span>
             </a>
-          </div>
-
-          <div class="editor-text-options grid">
             <a
               href="#"
-              class="btn-option text-increase"
+              class="btn-tool text-increase"
               onclick="onChangeFontSize(2)"
             >
               <span class="tooltip">Increase Font Size</span>
@@ -199,7 +193,7 @@
             </a>
             <a
               href="#"
-              class="btn-option text-decrease"
+              class="btn-tool text-decrease"
               onclick="onChangeFontSize(-2)"
             >
               <span class="tooltip">Decrease Font Size</span>
@@ -207,7 +201,7 @@
             </a>
             <a
               href="#"
-              class="btn-option"
+              class="btn-tool"
               title="Align Left"
               onclick="onSetTextAlign('start')"
             >
@@ -218,7 +212,7 @@
             </a>
             <a
               href="#"
-              class="btn-option"
+              class="btn-tool"
               title="Align Center"
               onclick="onSetTextAlign('center')"
             >
@@ -229,7 +223,7 @@
             </a>
             <a
               href="#"
-              class="btn-option"
+              class="btn-tool"
               title="Align Right"
               onclick="onSetTextAlign('end')"
             >
@@ -242,31 +236,33 @@
               <option value="Impact">Impact</option>
               <option value="Arial">Ariel</option>
             </select>
-            <span class="btn-option">
+            <span class="btn-tool">
               <span class="tooltip">Text Color</span>
               <span>
                 <input
                   type="color"
                   name="fill-color"
                   value="#ffffff"
-                  class="color-picker btn-option"
+                  class="color-picker btn-tool"
                   oninput="onChangeFillColor(this.value)"
                 />
               </span>
             </span>
 
-            <span class="btn-option">
+            <span class="btn-tool">
               <span class="tooltip">Stroke Color</span>
               <span>
                 <input
                   type="color"
                   name="stroke-color"
-                  class="color-picker btn-option"
+                  class="color-picker btn-tool"
                   oninput="onChangeStrokeColor(this.value)"
                 />
               </span>
             </span>
           </div>
+
+          <div class="editor-text-tools"></div>
           <div class="emoji-selector"></div>
           <div class="share-btns">
             <button class="btn-download btn-share">

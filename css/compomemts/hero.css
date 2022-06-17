@@ -1,6 +1,7 @@
 .hero {
   height: 85vh;
   width: 100%;
+
   background-image: linear-gradient(
       to right bottom,
       rgba(59, 200, 219, 0.486),
@@ -13,22 +14,22 @@
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   position: absolute;
-  /* padding: 1.9rem; */
+
   transition: transform 0.4s;
 }
 
-.logo-box {
+.hero .logo-box {
   position: absolute;
   top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.logo {
+.hero .logo {
   height: 8rem;
 }
 
-.text-box {
+.hero .text-box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -38,7 +39,7 @@
   text-align: center;
 }
 
-.heading-primary {
+.hero .heading-primary {
   color: #fff;
   text-transform: uppercase;
 
@@ -46,7 +47,7 @@
   margin-bottom: 1.5rem;
 }
 
-.heading-primary-main {
+.hero .heading-primary-main {
   display: block;
   font-size: 1.55rem;
   font-weight: 700;
@@ -57,11 +58,10 @@
   animation-timing-function: ease-out;
 }
 
-.heading-primary-sub {
+.hero .heading-primary-sub {
   display: block;
   font-size: 0.8rem;
   font-weight: 700;
-  /* letter-spacing: 0.3rem; */
 
   animation: moveInRight 1s ease-out;
 }
