@@ -72,7 +72,7 @@ function onDown(ev) {
   gStartPos = pos
 
   if (checkOnResize(pos)) {
-    console.log('Resizing...')
+    alert('Resizing...')
     document.body.style.cursor = 'nesw-resize'
     setLineResize(true)
     renderMeme()
@@ -80,7 +80,7 @@ function onDown(ev) {
   }
 
   if (checkOnRotate(pos)) {
-    console.log('Rotating...')
+    alert('Rotating...')
     document.body.style.cursor = 'alias'
     setLineRotate(true)
     renderMeme()

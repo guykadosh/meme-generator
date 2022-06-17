@@ -97,6 +97,7 @@ function onChangeFontSize(diff) {
 
   setLineWidth(calcualteTextWidth(line))
 
+  alert(`Font Size: ${line.fontSize}px`)
   renderMeme()
 }
 
