@@ -38,3 +38,18 @@ function getRandomColor() {
 function calcAbsDistace(pos1, pos2) {
   return Math.sqrt((pos1.x - pos2.x) ** 2 + (pos1.y - pos2.y) ** 2)
 }
+
+function alert(msg) {
+  console.log('i got called')
+  const strHTMLs = `<p>${msg}</p>`
+
+  const elAlert = document.querySelector('.alert')
+  console.log(elAlert)
+  elAlert.innerHTML = strHTMLs
+  elAlert.classList.add('alert-open')
+
+  setTimeout(() => {
+    elAlert.classList.remove('alert-open')
+    elAlert.innerHTML = ''
+  }, 1000)
+}

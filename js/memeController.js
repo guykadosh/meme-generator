@@ -120,6 +120,8 @@ function onMoveLine(diff) {
 
 function onSaveMeme() {
   saveMeme()
+
+  alert('Meme Saved')
 }
 
 // Handle Generating Random meme with random img and lines

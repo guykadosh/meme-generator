@@ -37,6 +37,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
       console.log('Got back live url:', url)
       //Pass the url we got to the callBack func onSuccess, that will create the link to facebook
       onSuccess(url)
+      alert('Upload Successfull')
     })
     .catch(err => {
       console.error(err)
@@ -44,6 +45,10 @@ function doUploadImg(imgDataUrl, onSuccess) {
 }
 
 function downloadImg(elLink) {
+  renderMeme(true)
+
   var imgContent = gCanvas.toDataURL('image/jpeg') // image/jpeg the default format
   elLink.href = imgContent
+
+  alert('Downloading...')
 }

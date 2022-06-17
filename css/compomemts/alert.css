@@ -1,0 +1,30 @@
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  opacity: 0;
+
+  width: 22rem;
+  height: 4.7rem;
+  color: #fff;
+
+  font-size: 1.5rem;
+  background-color: #ffd43b;
+
+  border-radius: 9px;
+  box-shadow: 1px 3px 4px 0px rgb(0 0 0 / 40%);
+
+  transition: all 0.4s;
+
+  /* pointer-events: auto; */
+}
+
+.alert-open {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
