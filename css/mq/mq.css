@@ -105,12 +105,12 @@
     margin: 0 auto;
   }
 
-  .heading-primary-main {
+  .hero .heading-primary-main {
     font-size: 2.5rem;
     letter-spacing: 0.6rem;
   }
 
-  .heading-primary-sub {
+  .hero .heading-primary-sub {
     font-size: 1.35rem;
     letter-spacing: 0.2rem;
   }
@@ -148,12 +148,12 @@
     max-width: 1200px;
   }
 
-  .heading-primary-main {
+  .hero .heading-primary-main {
     font-size: 2.25rem;
     letter-spacing: 1rem;
   }
 
-  .heading-primary-sub {
+  .hero .heading-primary-sub {
     font-size: 1.375rem;
     letter-spacing: 0.3rem;
   }
