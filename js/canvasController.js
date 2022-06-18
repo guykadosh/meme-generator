@@ -15,7 +15,7 @@ function drawText(line) {
   // gCtx.save()
 
   // Style
-  gCtx.lineWidth = 1
+  gCtx.lineWidth = 0.5
   gCtx.fillStyle = line.color
   gCtx.strokeStyle = line.stroke
   gCtx.font = `${line.weight} ${line.fontSize}px ${line.font}`
@@ -37,8 +37,9 @@ function drawText(line) {
 function drawSelectedRect(line) {
   const lineArea = getLineArea(line)
   gCtx.lineWidth = 1
-  gCtx.strokeStyle = '#f8f9fa'
-
+  gCtx.strokeStyle = '#fff'
+  gCtx.save()
+  gCtx.setLineDash([4, 2])
   gCtx.strokeRect(
     lineArea.x - 5,
     lineArea.y - lineArea.height + 5,
@@ -59,6 +60,8 @@ function drawSelectedRect(line) {
   // Draw Rotate Circle
   gCtx.arc(lineArea.x + lineArea.width / 2, lineArea.y + 5, 5, 0, Math.PI * 2)
   gCtx.fill()
+
+  gCtx.restore()
 }
 
 // Events on Canvas (Mouse & Touch)
