@@ -93,6 +93,9 @@ function onImgSelect(imgId) {
   document.querySelector('.gallery').style.display = 'none'
   document.querySelector('.editor-container').style.display = 'flex'
 
+  // Add Resize event only first time editor loads
+  window.addEventListener('resize', resizeCanvas)
+
   // renderMeme()
   resizeCanvas()
 }

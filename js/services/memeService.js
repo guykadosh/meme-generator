@@ -144,6 +144,13 @@ function setLineRotate(isRotate) {
   line.isRotate = isRotate
 }
 
+function setNewLineSizes(ratio) {
+  gMeme.lines.forEach(line => {
+    line.fontSize *= ratio
+    line.width *= ratio
+  })
+}
+
 // Additional Manipulation Functions
 function addLine(txt = gPlaceholder) {
   let y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50

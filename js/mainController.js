@@ -27,7 +27,6 @@ function toggleMenu() {
 }
 
 function addEventListeners() {
-  window.addEventListener('resize', resizeCanvas)
   document.querySelector('.btn-download').addEventListener('click', onDownload)
 }
 

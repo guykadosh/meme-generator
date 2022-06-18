@@ -40,11 +40,9 @@ function calcAbsDistace(pos1, pos2) {
 }
 
 function alert(msg) {
-  console.log('i got called')
   const strHTMLs = `<p>${msg}</p>`
 
   const elAlert = document.querySelector('.alert')
-  console.log(elAlert)
   elAlert.innerHTML = strHTMLs
   elAlert.classList.add('alert-open')
 

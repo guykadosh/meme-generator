@@ -7,7 +7,6 @@ function renderMeme(ignoreSelected = false) {
   imgDraw.src = img.url
   gCtx.restore()
 
-  console.log('got called')
   imgDraw.onload = () => {
     gCanvas.height = (gCanvas.width * imgDraw.height) / imgDraw.width
 

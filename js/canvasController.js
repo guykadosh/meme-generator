@@ -151,7 +151,12 @@ function onDoubleClick(ev) {
 
 // Canvas Utils
 function resizeCanvas() {
-  var elContainer = document.querySelector('.canvas-container')
+  const elContainer = document.querySelector('.canvas-container')
+
+  const ratio = elContainer.offsetWidth / gCanvas.width
+
+  setNewLineSizes(ratio)
+
   gCanvas.width = elContainer.offsetWidth
   // gCanvas.height = elContainer.offsetHeight
   renderMeme()
@@ -166,12 +171,13 @@ function getEvPos(ev) {
   if (gTouchEvs.includes(ev.type)) {
     ev.preventDefault()
     ev = ev.changedTouches[0]
+
     pos = {
-      // x: ev.pageX - ev.target.offsetLeft,
-      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+      x: ev.pageX - ev.target.offsetLeft - 70,
       y: ev.pageY - ev.target.offsetParent.offsetTop,
     }
   }
+
   return pos
 }
 
