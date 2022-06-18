@@ -147,7 +147,6 @@ function onDoubleClick(ev) {
 
 // Canvas Utils
 function resizeCanvas() {
-  console.log('resizing')
   const elContainer = document.querySelector('.canvas-container')
 
   const ratio = elContainer.offsetWidth / gCanvas.width
