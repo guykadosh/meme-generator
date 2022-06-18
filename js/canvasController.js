@@ -29,7 +29,6 @@ function drawText(line) {
   // Draw
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)
-
 }
 
 // Draws rect around selected line
@@ -175,7 +174,7 @@ function getEvPos(ev) {
     ev = ev.changedTouches[0]
 
     pos = {
-      x: ev.pageX - ev.target.offsetLeft - 70,
+      x: ev.pageX - ev.target.offsetLeft - 20,
       y: ev.pageY - ev.target.offsetParent.offsetTop,
     }
   }
