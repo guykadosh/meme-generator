@@ -30,7 +30,6 @@ function drawText(line) {
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)
 
-  // gCtx.save()
 }
 
 // Draws rect around selected line

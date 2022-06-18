@@ -5,7 +5,6 @@ function renderMeme(ignoreSelected = false) {
   const imgDraw = new Image()
   const img = getImg(meme.selectedImgId)
   imgDraw.src = img.url
-  gCtx.restore()
 
   imgDraw.onload = () => {
     gCanvas.height = (gCanvas.width * imgDraw.height) / imgDraw.width
@@ -102,7 +101,9 @@ function onChangeFontSize(diff) {
 }
 
 function onSetFontFamily(fontFamily) {
-  setFontFamily(fontFamily)
+  const line = setFontFamily(fontFamily)
+
+  setLineWidth(calcualteTextWidth(line))
 
   renderMeme()
 }

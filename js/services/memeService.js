@@ -126,7 +126,10 @@ function setTextAlign(align) {
 }
 
 function setFontFamily(fontFamily) {
-  gMeme.lines[gMeme.selectedLineIdx].font = fontFamily
+  const line = getSelectedLine()
+  line.font = fontFamily
+
+  return line
 }
 
 // Line state setters

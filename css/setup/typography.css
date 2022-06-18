@@ -1,0 +1,29 @@
+/* Rubik-regular */
+@font-face {
+  font-family: Rubik-regular;
+  src: url(../../fonts/Rubik-Regular.ttf);
+}
+
+/* Rubik-bold */
+@font-face {
+  font-family: Rubik-bold;
+  src: url(../../fonts/Rubik-Bold.ttf);
+}
+
+/* Impact */
+@font-face {
+  font-family: Impact;
+  src: url(../../fonts/impact.ttf);
+}
+
+/* Fascinate */
+@font-face {
+  font-family: Fascinate;
+  src: url(../../fonts/Fascinate-Regular.ttf);
+}
+
+/* Fascinate */
+@font-face {
+  font-family: RussoOne;
+  src: url(../../fonts/RussoOne-Regular.ttf);
+}
