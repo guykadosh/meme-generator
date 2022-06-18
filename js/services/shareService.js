@@ -1,8 +1,15 @@
+'use strict'
 function uploadImg() {
   const imgDataUrl = gCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
 
   // A function to be called if request succeeds
   function onSuccess(uploadedImgUrl) {
+    const shareData = {
+      title: 'My-Meme',
+      text: 'Check out my meme!',
+      url: uploadedImgUrl,
+    }
+
     //Encode the instance of certain characters in the url
     const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
     console.log(encodedUploadedImgUrl)
@@ -10,14 +17,34 @@ function uploadImg() {
       '.user-msg'
     ).innerText = `Your photo is available here: ${uploadedImgUrl}`
     //Create a link that on click will make a post in facebook with the image we uploaded
+
     document.querySelector('.share-container').innerHTML = `
-    <span class="label"><a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
-    Share   
-      </a></span>
-    <span class="icon">
-      <i class="fa-solid fa-share-nodes"></i>
-    </span>
+              <span class="label" >Share</span>
+               <span class="icon">
+                  <i class="fa-solid fa-share-nodes"></i>
+              </span>
       `
+
+    // Share on Facebook
+    // document.querySelector('.share-container').innerHTML = `
+    // <span class="label"><a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+    // Share
+    //   </a></span>
+    // <span class="icon">
+    //   <i class="fa-solid fa-share-nodes"></i>
+    // </span>
+    //   `
+
+    // Web Share API
+    const elBtn = document.querySelector('.share-container')
+    elBtn.addEventListener('click', async () => {
+      try {
+        await navigator.share(shareData)
+        alert('Sharing Successfully')
+      } catch (err) {
+        alert(`Error: ${err}`)
+      }
+    })
   }
   //Send the image to the server
   doUploadImg(imgDataUrl, onSuccess)

@@ -58,6 +58,7 @@
   }
 
   body.menu-open .main-screen {
+    margin-top: 6rem;
     pointer-events: auto;
     opacity: 1;
   }
