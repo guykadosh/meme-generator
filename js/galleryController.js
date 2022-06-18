@@ -93,7 +93,7 @@ function onImgSelect(imgId) {
   document.querySelector('.gallery').style.display = 'none'
   document.querySelector('.editor-container').style.display = 'flex'
 
-  renderMeme()
+  // renderMeme()
   resizeCanvas()
 }
 
@@ -104,7 +104,7 @@ function onMemeSelect(memeIdx) {
   document.querySelector('.memes').style.display = 'none'
   document.querySelector('.editor-container').style.display = 'flex'
 
-  renderMeme()
+  // renderMeme()
   resizeCanvas()
 }
 

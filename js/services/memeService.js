@@ -208,12 +208,12 @@ function checkOnResize(pos) {
 function checkOnRotate(pos) {
   const line = getSelectedLine()
 
-  const corner = {
-    x: line.pos.x + line.width + 3,
-    y: line.pos.y + line.fontSize - 20,
+  const center = {
+    x: line.pos.x + line.width / 2,
+    y: line.pos.y + 3,
   }
 
-  const distance = calcAbsDistace(pos, corner)
+  const distance = calcAbsDistace(pos, center)
   return distance < 10
 }
 
@@ -240,15 +240,7 @@ function resizeLine(diff) {
 function rotateLine(diff) {
   const line = getSelectedLine()
 
-  // line.degree += diff
-  line.degree += Math.atan(diff / line.width)
-  line.pos.y += diff
-
-  // console.log(diff, line.width)
-  // console.log(diff / line.width)
-  console.log(Math.atan(diff / line.width) * (Math.PI / 180))
-  // console.log(line.pos.y)
-  // console.log(line.degree)
+  line.degree += diff
 }
 
 function saveMeme() {

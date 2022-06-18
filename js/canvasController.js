@@ -12,16 +12,24 @@ function drawText(line) {
   const text = line.txt
   const { x, y } = line.pos
 
+  // gCtx.save()
+
   // Style
   gCtx.lineWidth = 1
   gCtx.fillStyle = line.color
   gCtx.strokeStyle = line.stroke
   gCtx.font = `${line.weight} ${line.fontSize}px ${line.font}`
+  gCtx.save()
+
+  // Rotate
+  gCtx.translate(x + line.width / 2, y - line.fontSize / 2)
+  if (line.degree) gCtx.rotate((Math.PI / 180) * line.degree)
+  gCtx.translate(-(x + line.width / 2), -(y - line.fontSize / 2))
 
   // Draw
-  gCtx.rotate(line.degree)
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)
+
   // gCtx.save()
 }
 
@@ -48,7 +56,8 @@ function drawSelectedRect(line) {
     8
   )
 
-  gCtx.arc(lineArea.x + lineArea.width, lineArea.y + 3, 5, 0, Math.PI * 2)
+  // Draw Rotate Circle
+  gCtx.arc(lineArea.x + lineArea.width / 2, lineArea.y + 5, 5, 0, Math.PI * 2)
   gCtx.fill()
 }
 

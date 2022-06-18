@@ -5,15 +5,14 @@ function renderMeme(ignoreSelected = false) {
   const imgDraw = new Image()
   const img = getImg(meme.selectedImgId)
   imgDraw.src = img.url
-  // gCtx.restore()
+  gCtx.restore()
 
+  console.log('got called')
   gCanvas.height = (gCanvas.width * imgDraw.height) / imgDraw.width
 
   drawImg(imgDraw)
   meme.lines.forEach(line => drawText(line))
   if (!ignoreSelected) drawSelectedRect(meme.lines[meme.selectedLineIdx])
-
-  // gCtx.save()
 }
 
 function renderEmojis() {
