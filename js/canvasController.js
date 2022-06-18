@@ -12,18 +12,15 @@ function drawText(line) {
   const text = line.txt
   const { x, y } = line.pos
 
-  // gCtx.save()
-
   // Style
   gCtx.lineWidth = 0.5
   gCtx.fillStyle = line.color
   gCtx.strokeStyle = line.stroke
   gCtx.font = `${line.weight} ${line.fontSize}px ${line.font}`
-  gCtx.save()
 
   // Rotate
   gCtx.translate(x + line.width / 2, y - line.fontSize / 2)
-  if (line.degree) gCtx.rotate((Math.PI / 180) * line.degree)
+  gCtx.rotate((Math.PI / 180) * line.degree)
   gCtx.translate(-(x + line.width / 2), -(y - line.fontSize / 2))
 
   // Draw
@@ -58,8 +55,6 @@ function drawSelectedRect(line) {
   // Draw Rotate Circle
   gCtx.arc(lineArea.x + lineArea.width / 2, lineArea.y + 5, 5, 0, Math.PI * 2)
   gCtx.fill()
-
-  gCtx.restore()
 }
 
 // Events on Canvas (Mouse & Touch)
@@ -152,13 +147,14 @@ function onDoubleClick(ev) {
 
 // Canvas Utils
 function resizeCanvas() {
+  console.log('resizing')
   const elContainer = document.querySelector('.canvas-container')
 
   const ratio = elContainer.offsetWidth / gCanvas.width
-
   setNewLineSizes(ratio)
 
   gCanvas.width = elContainer.offsetWidth
+
   // gCanvas.height = elContainer.offsetHeight
   renderMeme()
 }

@@ -224,7 +224,7 @@ function checkOnRotate(pos) {
   }
 
   const distance = calcAbsDistace(pos, center)
-  return distance < 10
+  return distance < 15
 }
 
 // Handle state changes

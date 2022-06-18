@@ -6,15 +6,15 @@ function init() {
   gCanvas = document.querySelector('.canvas')
   gCtx = gCanvas.getContext('2d')
 
+  // Intialize Model
+  initGMeme()
+
   // Rendering
   renderGallery()
   renderSavedMemes()
   renderKeywords()
   renderDatalistKeywords()
   renderEmojis()
-
-  // Intialize Model
-  initGMeme()
 
   // Events Listeners
   addEventListeners()

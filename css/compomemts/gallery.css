@@ -18,7 +18,7 @@
 
 .gallery-imgs,
 .gallery-memes {
-  grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+  grid-template-columns: repeat(auto-fill, minmax(90px, 150px));
   gap: 0.9rem;
   width: 100%;
 
