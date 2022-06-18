@@ -32,7 +32,7 @@ const gEmojis = [
   '👇',
   '👏',
   '👧',
-  '👸',
+  '😲',
 ]
 
 function getEmojis() {
