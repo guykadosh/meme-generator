@@ -19,3 +19,37 @@
 .footer p {
   font-size: 0.8rem;
 }
+
+.footer .footer-social li {
+  display: inline-block;
+  margin-inline-end: 0.8rem;
+  margin-block-end: 1.2rem;
+  background-color: #1098ad;
+  cursor: pointer;
+}
+
+.footer-social li.fb-link:hover {
+  background-color: #516fad;
+}
+
+.footer-social li.twitter-link:hover {
+  background-color: #00acee;
+}
+
+.footer-social li.be-link:hover {
+  background-color: #000;
+}
+
+.footer-social li.drib-link:hover {
+  background-color: #ea4c89;
+}
+
+.footer-social a {
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
