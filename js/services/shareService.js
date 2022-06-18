@@ -44,11 +44,44 @@ function doUploadImg(imgDataUrl, onSuccess) {
     })
 }
 
-function downloadImg(elLink) {
+function onDownload() {
+  const elBtn = document.querySelector('.btn-download')
+
   renderMeme(true)
 
-  var imgContent = gCanvas.toDataURL('image/jpeg') // image/jpeg the default format
-  elLink.href = imgContent
+  alert('Preparing...')
 
+  const strHTMLs = `
+  <a href="#" download="my-img.jpg">
+  <span class="label">Click Again!</span>
+  <span class="icon">
+  <i class="fa-solid fa-download"></i>
+  </span>`
+
+  elBtn.innerHTML = strHTMLs
+  window.removeEventListener('resize', resizeCanvas)
+  elBtn.removeEventListener('click', onDownload)
+  elBtn.addEventListener('click', downloadImg)
+}
+
+function downloadImg() {
+  const elBtn = document.querySelector('.btn-download')
+  const elLink = document.querySelector('.btn-download a')
+
+  const imgContent = gCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+
+  elLink.href = imgContent
   alert('Downloading...')
+
+  const strHTMLs = `
+                <span class="label">Download</span>
+                <span class="icon">
+                  <i class="fa-solid fa-download"></i>
+                </span>`
+
+  elBtn.innerHTML = strHTMLs
+
+  window.addEventListener('resize', resizeCanvas)
+  elBtn.addEventListener('click', onDownload)
+  elBtn.removeEventListener('click', downloadImg)
 }

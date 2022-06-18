@@ -6,21 +6,29 @@ function init() {
   gCanvas = document.querySelector('.canvas')
   gCtx = gCanvas.getContext('2d')
 
+  // Rendering
   renderGallery()
   renderSavedMemes()
   renderKeywords()
   renderDatalistKeywords()
   renderEmojis()
+
+  // Intialize Model
   initGMeme()
 
   // Events Listeners
-  window.addEventListener('resize', resizeCanvas)
+  addEventListeners()
   addMouseListeners()
   addTouchListeners()
 }
 
 function toggleMenu() {
   document.body.classList.toggle('menu-open')
+}
+
+function addEventListeners() {
+  window.addEventListener('resize', resizeCanvas)
+  document.querySelector('.btn-download').addEventListener('click', onDownload)
 }
 
 function addMouseListeners() {
