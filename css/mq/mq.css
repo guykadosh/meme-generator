@@ -79,7 +79,11 @@
 }
 
 /* SMALL */
-@media (min-width: 400px) {
+@media (min-width: 360px) {
+  .canvas-container {
+    width: 350px;
+  }
+
   html {
     font-size: 87.5%;
   }
