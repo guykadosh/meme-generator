@@ -26,10 +26,10 @@ const gImgs = [
   { id: 23, url: 'images/memes/23.jpg', keywords: ['funny', 'popular'] },
   { id: 24, url: 'images/memes/24.jpg', keywords: ['funny', 'kids'] },
   { id: 25, url: 'images/memes/25.jpg', keywords: ['funny', 'kids'] },
-  { id: 26, url: 'images/memes/26.jpg', keywords: ['funny', 'kids'] },
+  { id: 26, url: 'images/memes/26.jpg', keywords: ['funny', 'puppy'] },
   { id: 27, url: 'images/memes/27.jpg', keywords: ['funny', 'kids'] },
-  { id: 28, url: 'images/memes/28.jpg', keywords: ['funny', 'kids'] },
-  { id: 29, url: 'images/memes/29.jpg', keywords: ['funny', 'kids'] },
+  { id: 28, url: 'images/memes/28.jpg', keywords: ['funny', 'popular'] },
+  { id: 29, url: 'images/memes/29.jpg', keywords: ['funny', 'cat'] },
 ]
 
 let gId = 25
