@@ -210,9 +210,9 @@ function checkOnResize(pos) {
   const line = getSelectedLine()
 
   const corner = { x: line.pos.x + line.width + 5, y: line.pos.y - 25 }
-  const distance = calcAbsDistace(pos, corner)
+  const distance = calcDistace(pos, corner)
 
-  return distance < 10
+  return distance < 15
 }
 
 function checkOnRotate(pos) {
@@ -223,8 +223,8 @@ function checkOnRotate(pos) {
     y: line.pos.y + 10,
   }
 
-  const distance = calcAbsDistace(pos, center)
-  return distance < 15
+  const distance = calcDistace(pos, center)
+  return distance < 12
 }
 
 // Handle state changes
