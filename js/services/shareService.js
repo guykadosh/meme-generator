@@ -15,7 +15,7 @@ function uploadImg() {
     console.log(encodedUploadedImgUrl)
     document.querySelector(
       '.user-msg'
-    ).innerText = `Your photo is available here: ${uploadedImgUrl}`
+    ).innerHTML = `<span>Your photo is available <a href="${uploadedImgUrl}">here</a></span>`
     //Create a link that on click will make a post in facebook with the image we uploaded
 
     document.querySelector('.share-container').innerHTML = `

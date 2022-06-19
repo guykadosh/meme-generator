@@ -1,5 +1,5 @@
 const gKeywordSearchCountMap = {
-  funny: 12,
+  funny: 24,
   cat: 16,
   baby: 8,
   tv: 10,

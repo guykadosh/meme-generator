@@ -65,13 +65,13 @@ function onSetTextLine(txt) {
   setLineWidth(gCtx.measureText(line.txt).width)
 
   renderMeme()
+
+  return line
 }
 
 // Changes text from input on canvas
 function onSetTextInline(txt) {
-  onSetTextLine(txt)
-
-  const line = getSelectedLine()
+  const line = onSetTextLine(txt)
 
   document.querySelector('.text-line').value = txt
   document.querySelector('.edit-input').style.width = `${line.width + 5}px`

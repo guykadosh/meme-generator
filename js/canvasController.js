@@ -19,6 +19,7 @@ function drawText(line) {
   gCtx.font = `${line.weight} ${line.fontSize}px ${line.font}`
 
   // Rotate
+  gCtx.save()
   gCtx.translate(x + line.width / 2, y - line.fontSize / 2)
   gCtx.rotate((Math.PI / 180) * line.degree)
   gCtx.translate(-(x + line.width / 2), -(y - line.fontSize / 2))
@@ -26,6 +27,8 @@ function drawText(line) {
   // Draw
   gCtx.fillText(text, x, y)
   gCtx.strokeText(text, x, y)
+
+  gCtx.restore()
 }
 
 // Draws rect around selected line
@@ -34,7 +37,7 @@ function drawSelectedRect(line) {
   gCtx.lineWidth = 1
   gCtx.strokeStyle = '#fff'
   gCtx.fillStyle = '#fff'
-  gCtx.save()
+  // gCtx.save()
   gCtx.setLineDash([4, 2])
   gCtx.strokeRect(
     lineArea.x - 5,

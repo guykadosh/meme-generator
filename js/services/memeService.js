@@ -86,7 +86,7 @@ function setSelectedLine(lineIdx) {
   return gMeme.lines[gMeme.selectedLineIdx]
 }
 
-function setLineWidth(width, line = gMeme.lines[gMeme.selectedLineIdx]) {
+function setLineWidth(width, line = getSelectedLine()) {
   line.width = width
   return width
 }
@@ -106,9 +106,9 @@ function setFontSize(size, lineIdx = gMeme.selectedLineIdx) {
 }
 
 function setTextAlign(align) {
-  gMeme.lines[gMeme.selectedLineIdx].align = align
+  const line = getSelectedLine()
 
-  const line = gMeme.lines[gMeme.selectedLineIdx]
+  line.align = align
 
   switch (line.align) {
     case 'start':
