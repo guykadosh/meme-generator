@@ -33,6 +33,7 @@ function drawSelectedRect(line) {
   const lineArea = getLineArea(line)
   gCtx.lineWidth = 1
   gCtx.strokeStyle = '#fff'
+  gCtx.fillStyle = '#fff'
   gCtx.save()
   gCtx.setLineDash([4, 2])
   gCtx.strokeRect(
