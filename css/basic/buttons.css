@@ -171,6 +171,7 @@ svg:hover .tooltip {
   text-decoration: none;
   color: inherit;
 }
+
 .btn-share::before {
   content: '';
   display: block;

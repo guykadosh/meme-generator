@@ -220,7 +220,7 @@ function checkOnRotate(pos) {
 
   const center = {
     x: line.pos.x + line.width / 2,
-    y: line.pos.y + 3,
+    y: line.pos.y + 10,
   }
 
   const distance = calcAbsDistace(pos, center)
